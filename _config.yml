@@ -1,0 +1,5 @@
+title: Fuse Programming Language
+description: A typed fusion of lua dialects that can compile into any lua-like runtime(including multiple lua versions, luaJIT and luau).
+theme: just-the-docs
+
+url: https://fuse-lang.github.io
