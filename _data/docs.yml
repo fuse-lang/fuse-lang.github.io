@@ -1,11 +1,22 @@
 - title: Getting Started
   docs:
   - home
-  - themes
-  - customization
+  - motivation
+  - roadmap
 
-- title: Examples
+- title: Basics
   docs:
-  - cheatsheet
-  - font-awesome
-  - bootstrap
+  - intro
+  - strings
+  - numbers
+  - tables
+  - functions
+  - structs
+  - traits
+
+- title: Fuse Standard Library
+  docs:
+  - array
+  - list
+  - map
+  - set

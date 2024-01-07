@@ -1,6 +1,6 @@
 ---
-title: Font Awesome Icon List
-permalink: /docs/font-awesome/
+title: Numbers
+permalink: /docs/numbers/
 description: Demo of all Font Awesome icons
 ---
 

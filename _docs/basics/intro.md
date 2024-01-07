@@ -1,6 +1,6 @@
 ---
-title: Bootstrap Features
-permalink: /docs/bootstrap/
+title: Intro
+permalink: /docs/intro/
 ---
 
 
