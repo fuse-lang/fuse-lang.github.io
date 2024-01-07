@@ -12,13 +12,13 @@ The syntax itself is inspired by multiple languages such as `Lua`, `Luau`, `Type
 
 #### Possible Target Runtimes/Languages
 
-Lua 5.1
-Lua 5.2
-Lua 5.3
-Lua 5.4
-LuaJIT
-Luau
-Lune
+- Lua 5.1
+- Lua 5.2
+- Lua 5.3
+- Lua 5.4
+- LuaJIT
+- Luau
+- Lune
 
 ### Why not use `Luau` syntax?
 
