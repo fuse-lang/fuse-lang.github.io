@@ -6,7 +6,7 @@ redirect_from: /docs/index.html
 
 ## Getting started
 
-As it is right now Fuse is in the proposal phase, There is a proof of concept compiler in the work, and will get published before the final compiler so people can try the language out. You can check out the roadmap to learn more about the future of this project!
+As it is right now Fuse is in the proposal phase, There is a proof of concept compiler in the work, and will get published before the final compiler so people can try the language out. You can check out the [roadmap]({{ baseurl }}/docs/roadmap/) to learn more about the future of this project!
 
 ## How can I support this project
 
