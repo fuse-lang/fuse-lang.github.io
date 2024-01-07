@@ -6,45 +6,109 @@ redirect_from: /docs/index.html
 
 ## Getting started
 
-[GitHub Pages](https://pages.github.com) can automatically generate and serve the website for you.
-Let's say you have a username/organisation `my-org` and project `my-proj`; if you locate Jekyll source under `docs` folder of master branch in your repo `github.com/my-org/my-proj`, the website will be served on `my-org.github.io/my-proj`.
-The good thing about coupling your documentation with the source repo is, whenever you merge features with regarding content to master branch, it will also be published on the webpage instantly.
+As it is right now Fuse is in the proposal phase, There is a proof of concept compiler in the work, and will get published before the final compiler so people can try the language out. You can check out the roadmap to learn more about the future of this project!
 
-1. Just [download the source](https://github.com/aksakalli/jekyll-doc-theme/archive/gh-pages.zip) into your repo under `docs` folder.
-2. Edit site settings in  `_config.yml` file according to your project. !!! `baseurl` should be your website's relative URI like `/my-proj` !!!
-3. Replace `favicon.ico` and `assets/img/logonav.png` with your own logo.
+## How can I support this project
 
-## Writing content
+After publishing the final compiler everyone can contribute to the source code of Fuse compiler, Until then the only way for contiruting is creating an issue for your suggestions on [this repositoy](https://github.com/fuse-lang/fuse-lang.github.io) so we can discuss adding it into the proposal documentation and in result to this webpage.
 
-### Docs
+## The first taste
 
-Docs are [collections](https://jekyllrb.com/docs/collections/) of pages stored under `_docs` folder. To create a new page:
+### Hello World
 
-**1.** Create a new Markdown as `_docs/my-page.md` and write [front matter](https://jekyllrb.com/docs/frontmatter/) & content such as:
+##### Fuse
 
-```
----
-title: My Page
-permalink: /docs/my-page/
----
-
-Hello World!
+```rust
+print("Hello World")
 ```
 
-**2.** Add the pagename to `_data/docs.yml` file in order to list in docs navigation panel:
+##### Lua(it's not the actual compiled code)
 
-```
-- title: My Group Title
-  docs:
-  - my-page
+```lua
+print "Hello World"
 ```
 
-### Blog posts
+### Fibonacci
 
-Add a new Markdown file such as `2017-05-09-my-post.md` and write the content similar to other post examples.
+##### Fuse
 
-### Pages
+```rust
+fn fibonacci(n: number) -> number
+    if n < 2 then 
+        return n
+    else 
+        return fibonacci(n-1) + fibonacci(n-2)
+    end
+end
+```
 
-The homepage is located under `index.html` file. You can change the content or design completely different welcome page for your taste. (You can use [bootstrap components](http://getbootstrap.com/components/))
+##### Lua(it's not the actual compiled code)
 
-In order to add a new page, create a new `.html` or `.md` (markdown) file under root directory and link it in `_includes/topnav.html`.
+```lua
+local function fibonacci(n)
+    if n < 2 then 
+        return n
+    else 
+        return fibonacci(n-1) + fibonacci(n-2)
+    end
+end
+```
+
+### Tables
+
+##### Fuse
+
+```rust
+const t = { a: "A", b: "B", c: 3 }
+
+print(t.a)
+```
+
+##### Lua(it's not the actual compiled code)
+
+```lua
+local t = { a = "A", b = "B", c = 3 }
+
+print(t.a)
+```
+
+### Objects
+
+##### Fuse
+
+```rust
+struct Person
+  name: string
+  age: number
+end
+
+impl Person
+  fn new(name: string, age: number) -> Self
+    return Self { name, age }
+  end
+
+  fn hi(self)
+    print($"Hi, My name is ${self.name} and I'm ${self.age} years old!")
+  end
+end
+
+const person = Person::new("Sam", 42)
+person.hi()
+```
+
+##### Lua(it's not the actual compiled code)
+
+```lua
+local Person = {}
+
+local function Point:new(name, age)
+  return { name = name, age = age }
+end
+
+local function Point:hi(p)
+  print("Hi, My name is " .. self.name .. " and I'm " .. self.age .. " years old!")
+end
+
+local person = Point:new("Sam", 42)
+person:hi()
+```
