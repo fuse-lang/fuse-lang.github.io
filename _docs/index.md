@@ -101,14 +101,14 @@ person.hi()
 ```lua
 local Person = {}
 
-local function Point:new(name, age)
+local function Person:new(name, age)
   return { name = name, age = age }
 end
 
-local function Point:hi(p)
+local function Person:hi(p)
   print("Hi, My name is " .. self.name .. " and I'm " .. self.age .. " years old!")
 end
 
-local person = Point:new("Sam", 42)
+local person = Person:new("Sam", 42)
 person:hi()
 ```
