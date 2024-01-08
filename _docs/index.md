@@ -93,7 +93,7 @@ impl Person
 end
 
 const person = Person::new("Sam", 42)
-person.hi()
+person:hi()
 ```
 
 ##### Lua(it's not the actual compiled code)
