@@ -19,8 +19,9 @@ permalink: /docs/roadmap/
 - [ ] &nbsp;Lua `5.4` support
 - [ ] &nbsp;Async support
 - [ ] &nbsp;Iterative releases until version `1.0.0`
-- [ ] &nbsp;Start of rolling releases with version `1.0.0`
-- [ ] &nbsp;Start of `LTS` releases
+- [ ] &nbsp;Beyond
+	- [ ] &nbsp;Start of rolling releases from version `1.0.0`
+	- [ ] &nbsp;Start of `LTS` releases
 
 ### Community Feedback
 
