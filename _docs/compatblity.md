@@ -9,6 +9,11 @@ One of the big reasons behind the creation of `Fuse` is safety and ease of devel
 
 `Lua` language has proven to be one of the most backward-compatible languages that have ever existed and it maintained a surprising amount of backward compatibility when migrating to newer versions which is an astonishing achievement on their side. Unfortunately, it comes at the cost of keeping some of the decisions that made sense in the early days of the language and ever since have lost their usefulness.
 
+### Syntax
+
+`Fuse` syntax tries to be compatible with `Lua 5.1` to some extent but we do not want to get 100% compatibility at the cost of inheriting all of the technical debt. Instead, we are aiming for a similar enough language that makes porting current `Lua` codebases one module at a time possible.
+To provide such interoperability between `Fuse` and its target runtimes we have made sure to only support the highest common denominator between all of the different flavors of `Lua` so we can do things such as writing our code to run on `Lua 5.4` in customer's machine and have it on `LuaJIT` in production server.
+
 ### Limited Global Scope
 
 Having global scopes in your files and especially having them as the default behavior of variable definition is reasonable in smaller codebases but since `Lua` is one of the most loved scripting languages and is so easy to embed in any project we are seeing a multitude of projects that have adopted `Lua` for their scripting needs as their domain-specific language.
@@ -67,6 +72,7 @@ Keep in mind that the `_G` table always has `any` type and it is literally impos
 ### Features beyond `Lua 5.1`
 
 We have chosen the `Lua 5.1` as our base syntax to build upon. This version of `Lua` is the most available set of features in the `Lua` ecosystem since anything that works in `5.1` can also work in `5.2`, `5.3`, `5.4` and `Luau` but it doesn't mean that we don't backport any features from newer versions of `Lua` or ideas from `Luau` interpreter that can work as a syntax sugar with our `Lua 5.1` limitation that we applied to ourselves.
+There are a few notable changes. Mainly we don't have `pack` and `unpack` functions anymore, instead, we are using `table.pack` and `table.unpack` to make it consistent between different target versions. Other than that there are also some new features backported from newer releases of `Lua` and some completely new features that are missing from every version of `Lua`, Things like type support, string interpolation, traits, pattern matching, array deconstruction, `+= -= *= /=` operators and better error handling(see `Error Handling` section) among many others.
 
 ### Differences with `Lua 5.2`
 
