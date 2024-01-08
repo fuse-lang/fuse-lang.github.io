@@ -11,21 +11,21 @@ One of the big reasons behind the creation of `Fuse` is safety and ease of devel
 
 ### Syntax
 
-`Fuse` syntax tries to be compatible with `Lua 5.1` to some extent but we do not want to get 100% compatibility at the cost of inheriting all of the technical debt. Instead, we are aiming for a similar enough language that makes porting current `Lua` codebases one module at a time possible.
-To provide such interoperability between `Fuse` and its target runtimes we have made sure to only support the highest common denominator between all of the different flavors of `Lua` so we can do things such as writing our code to run on `Lua 5.4` in customer's machine and have it on `LuaJIT` in production server.
+Fuse syntax tries to be compatible with `Lua 5.1` to some extent but we do not want to get 100% compatibility at the cost of inheriting all of the technical debt. Instead, we are aiming for a similar enough language that makes porting current Lua codebases one module at a time possible.
+To provide such interoperability between Fuse and its target runtimes we have made sure to only support the highest common denominator between all of the different flavors of `Lua` so we can do things such as writing our code to run on `Lua 5.4` in customer's machine and have it on `LuaJIT` in production server.
 
 ### Limited Global Scope
 
-Having global scopes in your files and especially having them as the default behavior of variable definition is reasonable in smaller codebases but since `Lua` is one of the most loved scripting languages and is so easy to embed in any project we are seeing a multitude of projects that have adopted `Lua` for their scripting needs as their domain-specific language.
+Having global scopes in your files and especially having them as the default behavior of variable definition is reasonable in smaller codebases but since Lua is one of the most loved scripting languages and is so easy to embed in any project we are seeing a multitude of projects that have adopted Lua for their scripting needs as their domain-specific language.
 
-We think that global scopes by default aren't one of those features that would help us to achieve our goals Since it only makes sense in the context of header files, which may be one of the reasons behind the origin of this decision from `Lua` team in the birth of the language.
-It would've made sense for the early days of `Lua` but with the mass adoption of the language, We have seen a lot of abuse via bad use of global scope (or at times naive use).
+We think that global scopes by default aren't one of those features that would help us to achieve our goals Since it only makes sense in the context of header files, which may be one of the reasons behind the origin of this decision from Lua team in the birth of the language.
+It would've made sense for the early days of Lua but with the mass adoption of the language, We have seen a lot of abuse via bad use of global scope (or at times naive use).
 
 Other than that it makes it hard to reason about dependencies and the origin of global variables in any given project.
 
-But we cannot entirely remove global variables even tho it makes the inner workings of a reliable module system much easier and straightforward. There are already a lot of libraries written for `Lua` that are using the global scope and by isolating `Fuse` from accessing to global scope we are definitely going to break some legacy codes which is something we do not desire.
+But we cannot entirely remove global variables even tho it makes the inner workings of a reliable module system much easier and straightforward. There are already a lot of libraries written for Lua that are using the global scope and by isolating Fuse from accessing to global scope we are definitely going to break some legacy codes which is something we do not desire.
 
-So what we propose is keeping the global scope but it is no longer the default scope of our variables, For example instead of doing the following in the `Lua`:
+So what we propose is keeping the global scope but it is no longer the default scope of our variables, For example instead of doing the following in the Lua:
 
 ```lua
 global_variable = "I'm a global variable"
@@ -41,7 +41,7 @@ const local_constant = "I'm a local constant"
 -- or
 var local_variable = "I'm a local variable"
 ```
-As you can see in `Fuse` we have to explicitly define a variable as `global` with the keyword otherwise we get an error since it is the same as trying to write to an undefined variable.
+As you can see in Fuse we have to explicitly define a variable as `global` with the keyword otherwise we get an error since it is the same as trying to write to an undefined variable.
 
 We also don't allow access to global variables via the use of their name alone, Since global variables are side effects in nature and are unpredictable in the code what variable and with which type exists at this point in the program. These variables are really hard to keep track of since they can be defined inside of functions, files, chunks, or many other possible places.
 To accommodate this issue we only allow users to access `global variables` using the `global` keyword or `_G` table.
@@ -69,12 +69,12 @@ print(global.my_global)
 Keep in mind that the `_G` table always has `any` type and it is literally impossible  to type the global scope at compile time but it is possible to either cast the variables into a known type or create a type definition for global scope and so the compiler can infer the types from that but it won't guarantee the existence of the given variable and it just provides auto-complete and type checking.
 
 
-### Features beyond `Lua 5.1`
+### Features beyond Lua 5.1
 
-We have chosen the `Lua 5.1` as our base syntax to build upon. This version of `Lua` is the most available set of features in the `Lua` ecosystem since anything that works in `5.1` can also work in `5.2`, `5.3`, `5.4` and `Luau` but it doesn't mean that we don't backport any features from newer versions of `Lua` or ideas from `Luau` interpreter that can work as a syntax sugar with our `Lua 5.1` limitation that we applied to ourselves.
-There are a few notable changes. Mainly we don't have `pack` and `unpack` functions anymore, instead, we are using `table.pack` and `table.unpack` to make it consistent between different target versions. Other than that there are also some new features backported from newer releases of `Lua` and some completely new features that are missing from every version of `Lua`, Things like type support, string interpolation, traits, pattern matching, array deconstruction, `+= -= *= /=` operators and better error handling(see `Error Handling` section) among many others.
+We have chosen the Lua 5.1 as our base syntax to build upon. This version of Lua is the most available set of features in the Lua ecosystem since anything that works in `5.1` can also work in `5.2`, `5.3`, `5.4` and `Luau` but it doesn't mean that we don't backport any features from newer versions of Lua or ideas from Luau interpreter that can work as a syntax sugar with our Lua 5.1 limitation that we applied to ourselves.
+There are a few notable changes. Mainly we don't have `pack` and `unpack` functions anymore, instead, we are using `table.pack` and `table.unpack` to make it consistent between different target versions. Other than that there are also some new features backported from newer releases of Lua and some completely new features that are missing from every version of `Lua`, Things like type support, string interpolation, traits, pattern matching, array deconstruction, `+= -= *= /=` operators and better error handling(see `Error Handling` section) among many others.
 
-### Differences with `Lua 5.2`
+### Differences with Lua 5.2
 
 |Feature|Status|Notes|
 |-------|:----:|:----|
@@ -109,9 +109,9 @@ There are a few notable changes. Mainly we don't have `pack` and `unpack` functi
 |`string.gsub` is stricter about using `%` on special characters only|Future|it will be supported in future releases of `Fuse`, TBD|
 |`NaN` keys are supported for tables with `__newindex`|Future|it will be supported in future releases of `Fuse`, TBD|
 
-\* items whose status is marked with an asterisk are supported in `Fuse` but don't have universal support when used from some versions of vanilla `Lua`
+\* items whose status is marked with an asterisk are supported in Fuse but don't have universal support when used from some versions of vanilla Lua
 
-### Differences with `Lua 5.3`
+### Differences with Lua 5.3
 
 |Feature|Status|Notes|
 |-------|:----:|:----|
@@ -128,9 +128,9 @@ There are a few notable changes. Mainly we don't have `pack` and `unpack` functi
 |stricter error checking for `table.insert`/`table.remove`|Partial|we have them depending on the target runtime but we may add it into the `Fuse` language if we improve the performance cost|
 |`__eq` metamethod is called for unrelated metatables|Yes*|`Fuse` code will respect it but it won't work when used from `Lua` runtimes before `5.3`|
 
-\* items whose status is marked with an asterisk are supported in `Fuse` but don't have universal support when used from some versions of vanilla `Lua`
+\* items whose status is marked with an asterisk are supported in Fuse but don't have universal support when used from some versions of vanilla Lua
 
-### Differences with `Lua 5.4`
+### Differences with Lua 5.4
 
 |Feature|Status|Notes|
 |-------|:----:|:----|
@@ -146,7 +146,7 @@ There are a few notable changes. Mainly we don't have `pack` and `unpack` functi
 |function `print` calls `__tostring` instead of `tostring` to format its arguments|Yes||
 |decoding functions in the utf8 library do not accept surrogates|Yes||
 
-### Differences with `Luau`
+### Differences with Luau
 
 |Feature|Fuse Support|Luau Support|Notes|
 |-------|------------|------------|-----|
