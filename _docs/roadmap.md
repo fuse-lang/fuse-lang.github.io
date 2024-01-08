@@ -11,12 +11,15 @@ permalink: /docs/roadmap/
 - [ ] &nbsp;`jit` and `ffi` support
 - [ ] &nbsp;LuaJIT support
 - [ ] &nbsp;Macro System
+- [ ] &nbsp;`Luau` support through vanilla `Lua 5.1` syntax
 - [ ] &nbsp;Finalize Language Specs
 - [ ] &nbsp;Compiler Rewrite
 - [ ] &nbsp;First Stable compiler release `0.1.0`
+- [ ] &nbsp;Debug module
 - [ ] &nbsp;Lua `5.2` support
 - [ ] &nbsp;Lua `5.3` support
 - [ ] &nbsp;Lua `5.4` support
+- [ ] &nbsp;`Luau` support with full typed `Luau` syntax
 - [ ] &nbsp;Async support
 - [ ] &nbsp;Iterative releases until version `1.0.0`
 - [ ] &nbsp;Beyond
