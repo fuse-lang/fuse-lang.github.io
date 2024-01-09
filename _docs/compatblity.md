@@ -39,7 +39,7 @@ global_variable = "It will raise an error in compilation!"
 global global_variable = "I'm a global variable"
 const local_constant = "I'm a local constant"
 -- or
-var local_variable = "I'm a local variable"
+let local_variable = "I'm a local variable"
 ```
 As you can see in Fuse we have to explicitly define a variable as `global` with the keyword otherwise we get an error since it is the same as trying to write to an undefined variable.
 
@@ -136,7 +136,7 @@ There are a few notable changes. Mainly we don't have `pack` and `unpack` functi
 |-------|:----:|:----|
 |new generational mode for garbage collection|Partial|it depends on the target runtime, and will only work in `Lua 5.4`|
 |to-be-closed variables|Unknown|we are working on a solution to support it without depending on the language features, but even if pull it off the syntax is going to be different(since we already use macros as attributes like `Rust`)|
-|const variables|Yes|we offer both `const` and `var` keywords as opposed to using attributes with `local` keyword|
+|const variables|Yes|we offer both `const` and `let` keywords as opposed to using attributes with `local` keyword|
 |new implementation for `math.random`|Partial|right now it depends on the runtime but to make randoms more consistent across runtimes we are going to replace it in the future with our own `@fuse/math` library|
 |optional `init` argument to `stirng.gmatch`|Future|it doesn't exists on the current version but we are working on it|
 |new functions `lua_resetthread` and `coroutine.close`|Unknown|we are not sure whether it is possible or not|
@@ -193,7 +193,7 @@ There are a few notable changes. Mainly we don't have `pack` and `unpack` functi
 |`__eq` metamethod is called for unrelated metatables|Yes|No|`Fuse` code will respect it but it won't work when used from `Lua` runtimes before `5.3`|
 |new generational mode for garbage collection|Partial|In the Work|for `Fuse` it depends on the target runtime, and will only work when targeting `Lua 5.4`, `Luau` is also working on implementing a better GC|
 |to-be-closed variables|Unknown|No|we are working on a solution to support it without depending on the language features, but even if pull it off the syntax is going to be different(since we already use macros as attributes like `Rust`)|
-|const variables|Yes|No|`Fuse` offers both `const` and `var` keywords as opposed to using attributes with `local` keyword|
+|const variables|Yes|No|`Fuse` offers both `const` and `let` keywords as opposed to using attributes with `local` keyword|
 |new implementation for `math.random`|Partial|Yes|right now `Fuse` depends on the runtime but to make randoms more consistent across runtimes we are going to replace it in the future with our own `@fuse/math` library|
 |optional `init` argument to `stirng.gmatch`|Future|No||
 |new functions `lua_resetthread` and `coroutine.close`|Unknown|Yes||
