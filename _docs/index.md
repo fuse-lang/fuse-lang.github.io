@@ -18,7 +18,7 @@ After publishing the final compiler everyone can contribute to the source code o
 
 ##### Fuse
 
-```rust
+```fuse
 print("Hello World")
 ```
 
@@ -32,7 +32,7 @@ print "Hello World"
 
 ##### Fuse
 
-```rust
+```fuse
 fn fibonacci(n: number) -> number
     if n < 2 then 
         return n
@@ -58,7 +58,7 @@ end
 
 ##### Fuse
 
-```rust
+```fuse
 const t = { a: "A", b: "B", c: 3 }
 
 print(t.a)
@@ -76,7 +76,7 @@ print(t.a)
 
 ##### Fuse
 
-```rust
+```fuse
 struct Person
   name: string
   age: number

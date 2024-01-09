@@ -23,3 +23,5 @@ end
 
 # Performance-booster for watching directories on Windows
 gem "wdm", "~> 0.1.1", :install_if => Gem.win_platform?
+
+gem "rouge", git: "https://github.com/rzvxa/rouge.git", tag: "v3.26.0-fuse"

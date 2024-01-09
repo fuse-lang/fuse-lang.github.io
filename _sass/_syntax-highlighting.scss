@@ -7,8 +7,8 @@
 
     .hll { background-color: #000; border: 1px solid #ccc; padding: 6px 10px; border-radius: 3px; }
     .c { color: #a89984; font-style: italic; }
-    .err { color: #cc241d; background-color: #e3d2d2; }
-    .k { color: #ebdbb2; font-weight: bold; }
+    .err { color: #cc241d; }
+    .k { color: #689d6a; font-weight: bold; }
     .o { color: #ebdbb2; font-weight: bold; }
     .cm { color: #a89984; font-style: italic; }
     .cp { color: #999999; font-weight: bold; }
@@ -32,13 +32,13 @@
     .kp { color: #ebdbb2; font-weight: bold; }
     .kr { color: #ebdbb2; font-weight: bold; }
     .kt { color: #445588; font-weight: bold; }
-    .m { color: #009999; }
-    .s { color: #dd1144; }
+    .m { color: #b16286; }
+    .s { color: #8ec07c; }
     .n { color: #ebdbb2; }
     .p { color: #689d6a; }
     .py { color: #ebdbb2; }
     .na { color: teal; }
-    .nb { color: #0086b3; }
+    .nb { color: #689d6a; }
     .nc { color: #445588; font-weight: bold; }
     .no { color: teal; }
     .ni { color: purple; }
@@ -49,25 +49,25 @@
     .nv { color: teal; }
     .ow { color: #ebdbb2; font-weight: bold; }
     .w { color: #bbbbbb; }
-    .mf { color: #009999; }
-    .mh { color: #009999; }
-    .mi { color: #009999; }
-    .mo { color: #009999; }
-    .sb { color: #dd1144; }
-    .sc { color: #dd1144; }
-    .sd { color: #dd1144; }
-    .s2 { color: #dd1144; }
-    .se { color: #dd1144; }
-    .sh { color: #dd1144; }
-    .si { color: #dd1144; }
-    .sx { color: #dd1144; }
+    .mf { color: #b16286; }
+    .mh { color: #b16286; }
+    .mi { color: #b16286; }
+    .mo { color: #b16286; }
+    .sb { color: #8ec07c; }
+    .sc { color: #8ec07c; }
+    .sd { color: #8ec07c; }
+    .s2 { color: #8ec07c; }
+    .se { color: #8ec07c; }
+    .sh { color: #8ec07c; }
+    .si { color: #8ec07c; }
+    .sx { color: #8ec07c; }
     .sr { color: #009926; }
-    .s1 { color: #dd1144; }
+    .s1 { color: #8ec07c; }
     .ss { color: #990073; }
     .bp { color: #999999; }
     .vc { color: teal; }
     .vg { color: teal; }
     .vi { color: teal; }
-    .il { color: #009999; }
+    .il { color: #b16286; }
     .gc { color: #999; background-color: #EAF2F5; }
 }

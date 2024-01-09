@@ -21,11 +21,12 @@ Fuse actully checks for read access to all variables and will warn the developer
 
 The second part of it is the name of our variable which should follow the [variable naming rules](#naming).
 
-All values in Lua are `first-class` values. It means that we can treat every value type in Fuse is assignable to variables, can be passed to functions, returned as results or get exported from a module.
+All values in Fuse are `first-class` values. It means that we can treat every value type in Fuse is assignable to variables, can be passed to functions, returned as results or get exported from a module.
 
 In Fuse similar to Lua there are eight basic types: `nil`, `boolean`, `number`, `string`, `function`, `userdata`, `thread` and `table`. But in addition to these types we also introduced `ustring` which is a specific type for working with utf8 strings.
 
-When we 
+When we
 
 <a name="naming" />
 ### Variable Naming Rules
+

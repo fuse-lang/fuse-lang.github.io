@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/rzvxa/rouge.git
+  revision: a4d8d19c555b606ea7fa5ad58fa069f538f7db22
+  tag: v3.26.0-fuse
+  specs:
+    rouge (3.26.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -234,7 +241,6 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     rexml (3.2.6)
-    rouge (3.26.0)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     safe_yaml (1.0.5)
@@ -272,6 +278,7 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
+  rouge!
   tzinfo (~> 1.2)
   tzinfo-data
   wdm (~> 0.1.1)

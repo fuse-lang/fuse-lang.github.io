@@ -8,6 +8,7 @@
 - title: Basics
   docs:
   - intro
+  - identifiers
   - variables
   - strings
   - numbers
