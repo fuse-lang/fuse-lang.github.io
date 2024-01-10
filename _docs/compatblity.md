@@ -78,10 +78,10 @@ There are a few notable changes. Mainly we don't have `pack` and `unpack` functi
 
 |Feature|Status|Notes|
 |-------|:----:|:----|
-|yieldable pcall/xpcall|Yes|part of the `@fuse` library|
+|yieldable pcall/xpcall|Yes|part of the `@fuse` libraries|
 |yieldable metamethods|Partial|part of the `@fuse` libraries|
-|ephemeron tables|No|limitation of `LuaJIT` and `Lua 5.1`, but `@fuse/collections` comes with a handy `WeakMap` data type to use|
-|bitwise operators|Yes|use of `bit32` in `Lua 5.2+` and `Luau`, `@fuse/bit32` for `Lua 5.1` and `LuaJIT`|
+|ephemeron tables|No|limitation of `LuaJIT` and `Lua 5.1`, but `@fuse:collections` comes with a handy `WeakMap` data type to use|
+|bitwise operators|Yes|use of `bit32` in `Lua 5.2+` and `Luau`, `@fuse:bit32` for `Lua 5.1` and `LuaJIT`|
 |light C functions|Partial|depends on the runtime, if your target supports it `Fuse` also supports it|
 |emergency garbage collector|Future|it is a runtime-specific problem, we will support it for runtimes that have it(even `Lua5.1` can be patched for it)|
 |goto|No|it complicates the control flow of the program and isn't even supported universally across the `Lua` ecosystem|
@@ -94,10 +94,10 @@ There are a few notable changes. Mainly we don't have `pack` and `unpack` functi
 |empty statement|Yes||
 |`break` statement may appear in the middle of a block|Yes||
 |no more verification of opcode consistency|Partial|it depends on the runtime and `Fuse` doesn't neither improve nor prevent it|
-|hook event "tail return" replaced by "tail call"|Unknown|right now `debug` is dependent on the runtime but with the introduction of `@fuse/debug` it will get unified across all runtimes|
+|hook event "tail return" replaced by "tail call"|Unknown|right now `debug` is dependent on the runtime but with the introduction of `@fuse:debug` it will get unified across all runtimes|
 |arguments for function called through xpcall|Yes||
-|optional base in `math.log`|Yes|`Fuse` uses it's own math module `@fuse/math`|
-|optional separator in string.rep|Yes|`Fuse` uses its own string module `@fuse/string`|
+|optional base in `math.log`|Yes|`Fuse` uses it's own math module `@fuse:math`|
+|optional separator in string.rep|Yes|`Fuse` uses its own string module `@fuse:string`|
 |`file:write` returns file|No|as it is right now we do not support it, this is because of limitations in some of our target runtimes|
 |closing a pipe returns exit status|Partial|depends on the runtime|
 |`os.exit` may close state|Partial|depends on the runtime|
@@ -105,7 +105,7 @@ There are a few notable changes. Mainly we don't have `pack` and `unpack` functi
 |frontier patterns|Future|it will be supported in future releases of `Fuse`, TBD|
 |`%g` in patterns|Future|it will be supported in future releases of `Fuse`, TBD|
 |`\0` in patterns|Future|it will be supported in future releases of `Fuse`, TBD|
-|`debug.getlocal` can access function varargs|Unknown|right now `debug` is dependent on the runtime but with the introduction of `@fuse/debug` it will get unified across all runtimes|
+|`debug.getlocal` can access function varargs|Unknown|right now `debug` is dependent on the runtime but with the introduction of `@fuse:debug` it will get unified across all runtimes|
 |`string.gsub` is stricter about using `%` on special characters only|Future|it will be supported in future releases of `Fuse`, TBD|
 |`NaN` keys are supported for tables with `__newindex`|Future|it will be supported in future releases of `Fuse`, TBD|
 
@@ -119,7 +119,7 @@ There are a few notable changes. Mainly we don't have `pack` and `unpack` functi
 |integers (64-bit by default)|No|it will break our compatibility with most of our target runtimes|
 |bitwise operators|Yes|without 64-bit integers, it is the same as operators in `Lua 5.2` which is supported in `Fuse`|
 |basic utf-8 support|Yes|we have full support for utf-8 strings(see `ustring` type)|
-|functions for packing and unpacking values (string.pack/unpack/packsize)|Yes|support via `@fuse/string` library|
+|functions for packing and unpacking values (string.pack/unpack/packsize)|Yes|support via `@fuse:string` library|
 |floor division|Yes||
 |`ipairs` and the `table` library respect metamethods|Yes*|`Fuse` code will respect them but it won't work when used from `Lua` runtimes before `5.3`|
 |new function `table.move`|Yes||
@@ -137,7 +137,7 @@ There are a few notable changes. Mainly we don't have `pack` and `unpack` functi
 |new generational mode for garbage collection|Partial|it depends on the target runtime, and will only work in `Lua 5.4`|
 |to-be-closed variables|Unknown|we are working on a solution to support it without depending on the language features, but even if pull it off the syntax is going to be different(since we already use macros as attributes like `Rust`)|
 |const variables|Yes|we offer both `const` and `let` keywords as opposed to using attributes with `local` keyword|
-|new implementation for `math.random`|Partial|right now it depends on the runtime but to make randoms more consistent across runtimes we are going to replace it in the future with our own `@fuse/math` library|
+|new implementation for `math.random`|Partial|right now it depends on the runtime but to make randoms more consistent across runtimes we are going to replace it in the future with our own `@fuse:math` library|
 |optional `init` argument to `stirng.gmatch`|Future|it doesn't exists on the current version but we are working on it|
 |new functions `lua_resetthread` and `coroutine.close`|Unknown|we are not sure whether it is possible or not|
 |string-to-number coercions moved to the string library|Unknown|it may break compatibility with older versions and needs more time in the oven before we can make the final verdict|
@@ -194,7 +194,7 @@ There are a few notable changes. Mainly we don't have `pack` and `unpack` functi
 |new generational mode for garbage collection|Partial|In the Work|for `Fuse` it depends on the target runtime, and will only work when targeting `Lua 5.4`, `Luau` is also working on implementing a better GC|
 |to-be-closed variables|Unknown|No|we are working on a solution to support it without depending on the language features, but even if pull it off the syntax is going to be different(since we already use macros as attributes like `Rust`)|
 |const variables|Yes|No|`Fuse` offers both `const` and `let` keywords as opposed to using attributes with `local` keyword|
-|new implementation for `math.random`|Partial|Yes|right now `Fuse` depends on the runtime but to make randoms more consistent across runtimes we are going to replace it in the future with our own `@fuse/math` library|
+|new implementation for `math.random`|Partial|Yes|right now `Fuse` depends on the runtime but to make randoms more consistent across runtimes we are going to replace it in the future with our own `@fuse:math` library|
 |optional `init` argument to `stirng.gmatch`|Future|No||
 |new functions `lua_resetthread` and `coroutine.close`|Unknown|Yes||
 |string-to-number coercions moved to the string library|Maybe|No||

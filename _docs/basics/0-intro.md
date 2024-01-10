@@ -170,6 +170,18 @@ fn handle_request(req: Request): string
 end
 ```
 
+### Comments
+
+```fuse
+-- This is a single line comment
+
+--- This is a documentation comment used to document variables,
+---	functions, structs, traits and libraries. Tools and text editors
+--- may treat these comments differently.
+```
+
+Right now Fuse dosn't support multiline comments. we may add them back in future but only if we see a real demand for them.
+
 ### Nilable and Nil checks
 
 Fuse by default is a `nil` safe language, We do not let any nil values to be passed around. Since `nil` has it's own type it is against the type system to assign `nil` to any other types but because of our `type semantic` type system we can explicitly say that a type can also be `nil`.
@@ -205,4 +217,29 @@ const message = match user when
 end
 
 print(message)
+```
+
+### Imports
+
+To access exposed modules from other libraries use `import` instruction.
+
+```fuse
+-- Importing something from fuse standard library.
+import io from "@fuse:io"
+
+-- Importing libraries from 
+```
+
+### Collections
+
+Lua comes with a really smart design for implementing both objects and arrays all with the same piece of code. While by doing so they have made the interpreter insainly small and portable, For a compiled language like fuse this isn't a goal anymore; After all Fuse will compile into vanilla Lua and won't need anything other than a viable Lua interpreter to run.
+Becuase of this differences in the workflow of Fuse and Lua, We can introduce additional data structures with `Zero Cost Abstraction`. Some of these new data structures are our `collections` module which comes with multiple useful tools in addition to the `table`, Things such as, `Array`, `List`, `Map`, `Set` among others(see [Fuse Standard Library](/docs/@fuse/)).
+
+```fuse
+import { Array, List, Map, Set } from "@fuse:collections"
+
+const array: Array<number> = [1, 2, 3]
+const list: List<number> = [1, 2, 3]
+const map: Map<string, number> = { "A": 1, "Blue", 42, "Jay": 9 }
+const set: Set<string> = { "Just", "The", "Unique", "Entries" }
 ```
