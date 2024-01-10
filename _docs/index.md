@@ -33,7 +33,7 @@ print "Hello World"
 ##### Fuse
 
 ```fuse
-fn fibonacci(n: number) -> number
+fn fibonacci(n: number): number
     if n < 2 then 
         return n
     else 
@@ -83,7 +83,7 @@ struct Person
 end
 
 impl Person
-  fn new(name: string, age: number) -> Self
+  fn new(name: string, age: number): Self
     return Self { name, age }
   end
 
