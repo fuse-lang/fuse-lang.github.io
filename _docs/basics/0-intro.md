@@ -199,7 +199,6 @@ end
 Or using pattern matching
 
 ```fuse
--- ...
 const message = match user when
 	{ display_name } => $"Hello, ${display_name}"
 	nil => "User Not Found."
