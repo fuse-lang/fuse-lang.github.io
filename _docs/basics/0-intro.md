@@ -104,7 +104,7 @@ end
 For functions with a single expression body you can omit the `end` keyword and use and `=` sign to assign the return value of the function.
 
 ```fuse
-fn sum(a: number, b: number): number = a + b
+fn sum(a: number, b: number): number => a + b
 ```
 
 ### Conditional Expressions
