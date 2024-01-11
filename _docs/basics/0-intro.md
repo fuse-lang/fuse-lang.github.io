@@ -167,7 +167,7 @@ assert(num == 10)
 A `repeat` block without any condition will act as an infinite loop.
 
 ```fuse
-repeat
+repeat do
   print("This will print forever!")
 end
 ```
@@ -184,10 +184,11 @@ end
 ```fuse
 fn handle_request(req: Request): string
   match req when
-    { status: 200 } => req.body
-    { status } if status >= 400 and status < 500 => "User Error"
-    { status } if status >= 500 and status < 600 => "Server Error"
-    _ => "Unknown Error"
+    { status: 200 } then req.body end
+    { status } if status >= 400 and status < 500 then "User Error" end
+    { status } if status >= 500 and status < 600 then "Server Error" end
+    { status: 900 } then "Unknown Error" end
+    _ then "Unknown Error" end
   end
 end
 ```
@@ -234,8 +235,8 @@ Or using pattern matching
 
 ```fuse
 const message = match user when
-  { display_name } => $"Hello, ${display_name}"
-  nil => "User Not Found."
+  { display_name } then $"Hello, ${display_name}" end
+  nil then "User Not Found." end
 end
 
 print(message)
