@@ -224,10 +224,11 @@ print(message)
 To access exposed modules from other libraries use `import` instruction.
 
 ```fuse
--- Importing something from fuse standard library.
+-- Importing something from fuse standard library
 import io from "@fuse:io"
 
--- Importing libraries from 
+-- Importing libraries from Lua path
+import name from "path/to/lib"
 ```
 
 ### Collections
