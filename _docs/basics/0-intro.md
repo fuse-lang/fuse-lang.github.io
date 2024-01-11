@@ -60,6 +60,28 @@ const c = 299792458
 const e = 2.7182
 ```
 
+### Types
+
+Even tho we don't have to explicitly define the types in the examples above, underneath all of ther are getting the correct type with type inference.
+In Fuse we anotate types after the variable's name. This style of type anotation lets us to push every variable specific part to the right and keep the left hand side of our variable definitions cleaner.
+
+Here are some variable definitions with explicit type anotations.
+
+```fuse
+const name: string = "Sam"
+const max_health: = 100
+let score: number | string = 30
+score = "Max"
+```
+
+As you can see variables can have one or more types, variables with more than one type in their definition can be used with multiple value types; But reading their value as a specific type needs runtime checks and casting to prevent undesired behaviors.
+
+```fuse
+const score: number | string = 30
+const score_number: number = score -- Error, Won't compile since may result in type error!
+const score_number: number = score as number -- Ok, Since we are explicitly casting to a number.
+```
+
 ### Functions
 
 Fuse keeps the original syntax of the Lua language with one exceptions functions like all values are defined in the local scope by default.
