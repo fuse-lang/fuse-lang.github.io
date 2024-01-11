@@ -266,3 +266,25 @@ const list: List<number> = [1, 2, 3]
 const map: Map<string, number> = { "A": 1, "Blue", 42, "Jay": 9 }
 const set: Set<string> = { "Just", "The", "Unique", "Entries" }
 ```
+
+### Struct
+
+Lua's table is the living embodiment of "when you only have a hammer everything is a nail". While this strategy is good in keeping the interpreter small won't help with the code readability.
+
+Fuse comes with an explicit syntax to define structures which will use the tables under the hood but will make the definition and implementation much more contained.
+
+Here is a simple `struct`.
+
+```fuse
+struct Book
+	name: string
+	author: string
+	pages: number
+end
+
+impl Book
+	fn new(name: string, author: string, pages: number): Self
+		return Self { name, author, pages }
+	end
+end
+```
