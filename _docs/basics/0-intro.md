@@ -40,14 +40,14 @@ let name = "Ada Lovelace"
 let pi = 3.14
 let do_major = ["do", "re", "mi", "fa", "sol", "la", "si", "do"]
 let player = {
-	health: 70,
-	score: 248.3,
-	spells: [
-		"Fire Breath",
-		"Ice Blast",
-		"Ice Wall",
-		"Master Elements(Passive)",
-	],
+  health: 70,
+  score: 248.3,
+  spells: [
+    "Fire Breath",
+    "Ice Blast",
+    "Ice Wall",
+    "Master Elements(Passive)",
+  ],
 }
 ```
 
@@ -89,7 +89,7 @@ Here is a function that will take two `number` and will return an `number`:
 
 ```fuse
 function sum(a: number, b: number): number
-	return a + b
+  return a + b
 end
 ```
 
@@ -97,7 +97,7 @@ In addition to that you can also use the `fn` keyword instead of the longer vers
 
 ```fuse
 fn sum(a: number, b: number): number
-	return a + b
+  return a + b
 end
 ```
 
@@ -111,11 +111,11 @@ fn sum(a: number, b: number): number = a + b
 
 ```fuse
 if num > 0  then
-	print("Positive")
+  print("Positive")
 elseif num < 0 then
-	print("Negative")
+  print("Negative")
 else
-	print("Zero")
+  print("Zero")
 end
 ```
 
@@ -130,7 +130,7 @@ const max = if a > b then a else b end
 ```fuse
 const fruits = ["apple", "orange", "kiwi", "banana"]
 for index, fruit in ipairs(fruits) do
-	print(fruit)
+  print(fruit)
 end
 ```
 
@@ -142,8 +142,8 @@ See [For Loop](/docs/loops/)
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 let index = 1
 while index < #numbers do
-	print($"Number at index ${index} is ${numbers[index]}")
-	index += 1
+  print($"Number at index ${index} is ${numbers[index]}")
+  index += 1
 end
 ```
 
@@ -155,8 +155,8 @@ end
 let num = 1
 
 repeat
-	print($"num: ${num}")
-	num += 1
+  print($"num: ${num}")
+  num += 1
 until num == 10
 
 assert(num == 10)
@@ -168,14 +168,14 @@ A `repeat` block without any condition will act as an infinite loop.
 
 ```fuse
 repeat
-	print("This will print forever!")
+  print("This will print forever!")
 end
 ```
 You can also acheive the same thing with a `while` loop like this:
 
 ```fuse
 while ture do
-	print("This will print forever!")
+  print("This will print forever!")
 end
 ```
 
@@ -183,12 +183,12 @@ end
 
 ```fuse
 fn handle_request(req: Request): string
-	match req when
-		{ status: 200 } => req.body
-		{ status } if status >= 400 and status < 500 => "User Error"
-		{ status } if status >= 500 and status < 600 => "Server Error"
-		_ => "Unknown Error"
-	end
+  match req when
+    { status: 200 } => req.body
+    { status } if status >= 400 and status < 500 => "User Error"
+    { status } if status >= 500 and status < 600 => "Server Error"
+    _ => "Unknown Error"
+  end
 end
 ```
 
@@ -198,7 +198,7 @@ end
 -- This is a single line comment
 
 --- This is a documentation comment used to document variables,
----	functions, structs, traits and libraries. Tools and text editors
+--- functions, structs, traits and libraries. Tools and text editors
 --- may treat these comments differently.
 ```
 
@@ -212,7 +212,7 @@ This function will return `nil` if user dosn't exists.
 
 ```fuse
 fn get_user(id: number): User | nil
-	-- ...
+  -- ...
 end
 ```
 
@@ -220,13 +220,13 @@ When using a value which can be `nil` we always have to check for being `nil`.
 
 ```fuse
 fn post_login_hooks(data: LoginData)
-	const user = get_user(data.uid)
+  const user = get_user(data.uid)
 
-	if user == nil then
-		print("User Not Found.")
-	else
-		print($"Hello, ${user.display_name}")
-	end
+  if user == nil then
+    print("User Not Found.")
+  else
+    print($"Hello, ${user.display_name}")
+  end
 end
 ```
 
@@ -234,8 +234,8 @@ Or using pattern matching
 
 ```fuse
 const message = match user when
-	{ display_name } => $"Hello, ${display_name}"
-	nil => "User Not Found."
+  { display_name } => $"Hello, ${display_name}"
+  nil => "User Not Found."
 end
 
 print(message)
@@ -277,14 +277,14 @@ Here is a simple `struct`.
 
 ```fuse
 struct Book
-	name: string
-	author: string
-	pages: number
+  name: string
+  author: string
+  pages: number
 end
 
 impl Book
-	fn new(name: string, author: string, pages: number): Self
-		return Self { name, author, pages }
-	end
+  fn new(name: string, author: string, pages: number): Self
+    return Self { name, author, pages }
+  end
 end
 ```
