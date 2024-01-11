@@ -289,3 +289,44 @@ impl Book
   end
 end
 ```
+
+### Trait
+
+In Fuse we value `composition` over `inheritance`, One of most common tools for providing language level composition support is `trait`s.
+Traits are used to share code between structs. They are in concept similar to `interface`s. Structs and Tables can implement traits; Traits cannot be instatiated and therefore have no fields.
+
+```fuse
+trait Weapon
+  fn fire(self)
+  fn reload(self, magazine: Magazine): boolean
+end
+
+struct Riffle
+  bullets: number
+end
+
+impl Riffle
+  const MAX_BULLETS: number = 30
+
+  fn new(): Self
+    return Self { bullets: MAX_BULLETS }
+  end
+end
+
+impl Weapon for Riffle
+  fn fire(self)
+    if self.bullets > 0 then
+      print("bang!")
+      self.bullets -= 1
+    else
+      print("empty!")
+    end
+  end
+
+  fn reload(self, magazine Magazine): boolean
+    print("reloading...")
+    self.bullets = Self::MAX_BULLETS
+    return true
+  end
+end
+```
