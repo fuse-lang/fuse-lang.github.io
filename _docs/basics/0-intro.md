@@ -22,7 +22,7 @@ fusec hello.fuse --target 5.1
 
 After running this command you can find a new file beside `hello.fuse` called `hello.lua` which now you can execute with any Lua 5.1 interpreter.
 
-Alternatively you can use this command to execute your fuse file directly.
+Alternatively, you can use this command to execute your fuse file directly.
 
 ```
 fuse hello.fuse
@@ -32,8 +32,8 @@ Congratulations you just wrote and ran your first Fuse code!
 
 ### Variables
 
-Fuse is a gradually typed language, Historicly languages with strong type systems imposed a lot of boiler plate code on the developers. In Fuse like most modern typed languages you usually don't need to anotate anything to get the benefits of the type system.
-This happens thanks to the type inference, Type of all these variables are determined by their initialization:
+Fuse is a gradually typed language, Historicly languages with strong type systems impose a lot of boilerplate code on the developers. In Fuse, like most modern typed languages you usually don't need to annotate anything to get the benefits of the type system.
+This happens thanks to the type inference, The Type of all these variables is determined by their initialization:
 
 ```fuse
 let name = "Ada Lovelace"
@@ -51,7 +51,7 @@ let player = {
 }
 ```
 
-Read only values can be defined as constants, these values cannot change after the initial assignment.
+Read-only values can be defined as constants, these values cannot change after the initial assignment.
 
 ```fuse
 const genre = "Jazz"
@@ -62,10 +62,10 @@ const e = 2.7182
 
 ### Types
 
-Even tho we don't have to explicitly define the types in the examples above, underneath all of ther are getting the correct type with type inference.
-In Fuse we anotate types after the variable's name. This style of type anotation lets us to push every variable specific part to the right and keep the left hand side of our variable definitions cleaner.
+Even tho we don't have to explicitly define the types in the examples above, underneath all of them are getting the correct type with type inference.
+In Fuse, we annotate types after the variable's name. This style of type annotation lets us push every variable-specific part to the right and keep the left-hand side of our variable definitions cleaner.
 
-Here are some variable definitions with explicit type anotations.
+Here are some variable definitions with explicit type annotations.
 
 ```fuse
 const name: string = "Sam"
@@ -74,7 +74,7 @@ let score: number | string = 30
 score = "Max"
 ```
 
-As you can see variables can have one or more types, variables with more than one type in their definition can be used with multiple value types; But reading their value as a specific type needs runtime checks and casting to prevent undesired behaviors.
+As you can see variables can have one or more types, and variables with more than one type in their definition can be used with multiple value types; But reading their value as a specific type needs runtime checks and casting to prevent undesired behaviors.
 
 ```fuse
 const score: number | string = 30
@@ -84,8 +84,8 @@ const score_number: number = score as number -- Ok, Since we are explicitly cast
 
 ### Functions
 
-Fuse keeps the original syntax of the Lua language with one exceptions functions like all values are defined in the local scope by default.
-Here is a function that will take two `number` and will return an `number`:
+Fuse keeps the original syntax of the Lua language with one exception functions like all values are defined in the local scope by default.
+Here is a function that will take two `number` and will return a `number`:
 
 ```fuse
 function sum(a: number, b: number): number
@@ -101,7 +101,7 @@ fn sum(a: number, b: number): number
 end
 ```
 
-For functions with a single expression body you can omit the `end` keyword and use and `=` sign to assign the return value of the function.
+For functions with a single expression body, you can omit the `end` keyword and use the `=>` sign to assign the return value of the function.
 
 ```fuse
 fn sum(a: number, b: number): number => a + b
@@ -149,7 +149,7 @@ end
 
 ### Repeat Loop
 
-`repeat` works similar to a `while` loop but it will always execute the code block before checking the condition of the loop.
+`repeat` works similarly to a `while` loop but it will always execute the code block before checking the condition of the loop.
 
 ```fuse
 let num = 1
@@ -171,10 +171,10 @@ repeat do
   print("This will print forever!")
 end
 ```
-You can also acheive the same thing with a `while` loop like this:
+You can also achieve the same thing with a `while` loop like this:
 
 ```fuse
-while ture do
+while true do
   print("This will print forever!")
 end
 ```
@@ -196,20 +196,20 @@ end
 ### Comments
 
 ```fuse
--- This is a single line comment
+-- This is a single-line comment
 
 --- This is a documentation comment used to document variables,
---- functions, structs, traits and libraries. Tools and text editors
+--- functions, structs, traits, and libraries. Tools and text editors
 --- may treat these comments differently.
 ```
 
-Right now Fuse dosn't support multiline comments. we may add them back in future but only if we see a real demand for them.
+Right now Fuse doesn't support multiline comments. we may add them back in the future but only if we see a real demand for them.
 
 ### Nilable and Nil checks
 
-Fuse by default is a `nil` safe language, We do not let any nil values to be passed around. Since `nil` has it's own type it is against the type system to assign `nil` to any other types but because of our `type semantic` type system we can explicitly say that a type can also be `nil`.
+Fuse by default is a `nil` safe language, We do not let any nil values be passed around. Since `nil` has its own type it is against the type system to assign `nil` to any other types but because of our `type semantic` type system we can explicitly say that a type can also be `nil`.
 
-This function will return `nil` if user dosn't exists.
+This function will return `nil` if the user doesn't exist.
 
 ```fuse
 fn get_user(id: number): User | nil
@@ -217,7 +217,7 @@ fn get_user(id: number): User | nil
 end
 ```
 
-When using a value which can be `nil` we always have to check for being `nil`.
+When using a value that can be `nil` we always have to check for being `nil`.
 
 ```fuse
 fn post_login_hooks(data: LoginData)
@@ -231,7 +231,7 @@ fn post_login_hooks(data: LoginData)
 end
 ```
 
-Or using pattern matching
+Or using pattern-matching
 
 ```fuse
 const message = match user when
@@ -244,20 +244,20 @@ print(message)
 
 ### Imports
 
-To access exposed modules from other libraries use `import` instruction.
+To access exposed modules from other libraries use the `import` instruction.
 
 ```fuse
 -- Importing something from fuse standard library
 import io from "@fuse:io"
 
--- Importing libraries from Lua path
+-- Importing libraries from the Lua path
 import name from "path/to/lib"
 ```
 
 ### Collections
 
-Lua comes with a really smart design for implementing both objects and arrays all with the same piece of code. While by doing so they have made the interpreter insainly small and portable, For a compiled language like fuse this isn't a goal anymore; After all Fuse will compile into vanilla Lua and won't need anything other than a viable Lua interpreter to run.
-Becuase of this differences in the workflow of Fuse and Lua, We can introduce additional data structures with `Zero Cost Abstraction`. Some of these new data structures are our `collections` module which comes with multiple useful tools in addition to the `table`, Things such as, `Array`, `List`, `Map`, `Set` among others(see [Fuse Standard Library](/docs/@fuse/)).
+Lua comes with a really smart design for implementing both objects and arrays all with the same piece of code. By doing so they have made the interpreter insanely small and portable, For a compiled language like fuse this isn't a goal anymore; After all Fuse will compile into vanilla Lua and won't need anything other than a viable Lua interpreter to run.
+Because of these differences in the workflow of Fuse and Lua, We can introduce additional data structures with `Zero Cost Abstraction`. Some of these new data structures are our `collections` module which comes with multiple useful tools in addition to the `table`, Things such as, `Array`, `List`, `Map`, and `Set` among others(see [Fuse Standard Library](/docs/@fuse/)).
 
 ```fuse
 import { Array, List, Map, Set } from "@fuse:collections"
@@ -270,7 +270,7 @@ const set: Set<string> = { "Just", "The", "Unique", "Entries" }
 
 ### Struct
 
-Lua's table is the living embodiment of "when you only have a hammer everything is a nail". While this strategy is good in keeping the interpreter small won't help with the code readability.
+Lua's table is the living embodiment of "when you only have a hammer everything is a nail". While this strategy is good keeping the interpreter small won't help with the code readability.
 
 Fuse comes with an explicit syntax to define structures which will use the tables under the hood but will make the definition and implementation much more contained.
 
@@ -292,8 +292,8 @@ end
 
 ### Trait
 
-In Fuse we value `composition` over `inheritance`, One of most common tools for providing language level composition support is `trait`s.
-Traits are used to share code between structs. They are in concept similar to `interface`s. Structs and Tables can implement traits; Traits cannot be instatiated and therefore have no fields.
+In Fuse we value `composition` over `inheritance`, One of the most common tools for providing language-level composition support is `trait`s.
+Traits are used to share code between structs. They are in concept similar to `interface`s. Structs and Tables can implement traits; Traits cannot be instantiated and therefore have no fields.
 
 ```fuse
 trait Weapon
