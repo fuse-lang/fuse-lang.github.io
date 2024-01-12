@@ -44,9 +44,9 @@ local
 These following keywords aren't a part of the language but they are reserved to keep current programs future proof and therefore one should not assume that all these keywords are coming in the upcoming releases of the Fuse language, Only a select few will get into the actual spec.
 
 ```
-abstract   final      override   priv       prot       typeof
-is         satisfies  virtual    async      await      try
-catch      finally    yield      class      extend     defer
+abstract   async      await      catch      class      defer
+extend     finally    final      is         override   priv
+prot       satisfies  try        typeof     virtual    yield
 ```
 
 ### Naming Conventions
