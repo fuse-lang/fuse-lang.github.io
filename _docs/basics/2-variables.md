@@ -6,16 +6,71 @@ permalink: /docs/variables/
 Here's an example of creating a constant and initializing it:
 
 ```fuse
-const name: string = "Sam"
+const name = "Fuse"
 ```
 
 This is an example of a variable definition:
 
 ```fuse
-let name: string = "Sam"
+let name = "Fuse"
 ```
 
-Here are the different parts of a variable definition and assignment.
+A `const` can't be reassigned after it's initialization. Attempts to do so will result in a compiler error:
+
+```fuse
+const name = "Fuse"
+name = "Defuse" -- this won't compile!
+```
+
+However a `let` can be reassigned:
+
+```fuse
+let name = "Fuse"
+name = "Defuse" -- this will compile.
+```
+
+### Variable Type
+
+When we create a variable we can either explicitly declare its type or let the compiler to infer it.
+
+```fuse
+const g: number = 9.81 -- explicit type declaration.
+const pi = 3.14 -- implicit type infered from the assigned value.
+```
+
+Type inference can help us to write more consice, type safe code with no addition annotations. All these examples are using type inference.
+
+```fuse
+const message = "Hello!"
+-- same as
+const message: string = "Hello!"
+
+const n = 21
+-- same as
+const n: number = 21
+
+const numbers = [1, 2, 3, 4, 5, 6]
+-- same as
+const numbers: number[] = [1, 2, 3, 4, 5, 6]
+
+const table = { value: "My Value" }
+-- same as
+const table: { value: string } = { value: "My Value" }
+```
+
+In some situations we may want to explicitly annotate the type despite the inference, But in most cases it can result in a code which is more verbose than necessar.
+
+### Overview
+
+Given the example below here are the different parts of a variable declaration.
+
+```fuse
+const name: Type = value
+----- ----  ---- - -----
+  ^     ^     ^  ^   ^
+  |     |     |  |   |
+  1     2     3  4   5  
+```
 
 1. Keyword, which can be either `let`, `const`, or `global`.
   - This keyword defines both the scope of the variable and also its mutability. A variable is either immutable(`const`) or mutable(`let`).
