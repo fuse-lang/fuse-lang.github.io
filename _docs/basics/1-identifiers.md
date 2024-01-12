@@ -3,21 +3,21 @@ title: Identifiers
 permalink: /docs/identifiers/
 ---
 
-Identifiers are any name that we assign to things like variables, types or functions.
-Difference between identifiers and strings is that `string` is data but identifiers are a part of code. That's why we are bound to the limitations of the Lua programming language. In Fuse we can convert identifier names to string but in some situations we can access the identifier via parsing the string name.
+Identifiers are any name that we assign to things like variables, types, or functions.
+The difference between identifiers and strings is that `string` is data but identifiers are a part of code. That's why we are bound to the limitations of the Lua programming language. In Fuse, we can not convert identifier names to strings but in some situations, we can access the identifier by parsing the string name.
 
 ### Naming Rules
 
-Valid identifiers should follow these following rules, Otherwise the Fuse compile will produce an error.
+Valid identifiers should follow the following rules, Otherwise, the Fuse compile will produce an error.
 
   - Identifier must start with a letter or underscore(`_`).
-  - Identifier can contain ANSI letters, decimal digit characters and underscores(`_`).
+  - Identifier can contain ANSI letters, decimal digit characters, and underscores(`_`).
   - Identifier can not be one of the [reserved names](#reserved_names)(such as Fuse or Lua `keyword`s).
 
 <a name="reserved_names" />
 ### Reserved Identifiers
 
-As mentioned above, Identifiers cannot be a keyword from Fuse nor Lua language.
+As mentioned above, Identifiers cannot be a keyword from Fuse or Lua language.
 
 The following keywords are reserved and cannot be used as identifiers.
 
@@ -41,7 +41,7 @@ local
 
 #### Future Proof Reserves
 
-These following keywords aren't a part of the language but they are reserved to keep current programs future proof and therefore one should not assume that all these keywords are comming in the upcomming releases of the Fuse language, Only a select few will get into the actual spec.
+These following keywords aren't a part of the language but they are reserved to keep current programs future proof and therefore one should not assume that all these keywords are coming in the upcoming releases of the Fuse language, Only a select few will get into the actual spec.
 
 ```
 abstract   final      override   priv       prot       typeof
@@ -51,7 +51,7 @@ catch      finally    yield      class      extend     defer
 
 ### Naming Conventions
 
-In addition to the rules above, conventions for identifiers are used throughout the `@fuse` libraries, These conventions provide some much needed consistency for variables, functions, public methods and type names. However the compiler dosn't enfore these conventions so feel free to use whatever fit your needs.
+In addition to the rules above, conventions for identifiers are used throughout the `@fuse` libraries, These conventions provide some much-needed consistency for variables, functions, public methods, and type names. However, the compiler doesn't enforce these conventions so feel free to use whatever fit your needs.
 
 | Item | Conventions |
 |:-----|:-----------:|
@@ -69,4 +69,4 @@ In addition to the rules above, conventions for identifiers are used throughout 
 | Local Constants | `snake_case` |
 | Statics | `SCREAMING_SNAKE_CASE` |
 | Constants | `SCREAMING_SNAKE_CASE` |
-| Generic Parameters | `PascalCase`, either single uppercase letter or starts with `T` |
+| Generic Parameters | `PascalCase`, either a single uppercase letter or starts with `T` |
