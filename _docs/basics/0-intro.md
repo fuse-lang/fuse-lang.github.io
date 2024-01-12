@@ -284,7 +284,7 @@ struct Book
 end
 
 impl Book
-  fn new(name: string, author: string, pages: number): Self
+  pub fn new(name: string, author: string, pages: number): Self
     return Self { name, author, pages }
   end
 end
@@ -308,13 +308,13 @@ end
 impl Riffle
   const MAX_BULLETS: number = 30
 
-  fn new(): Self
+  pub fn new(): Self
     return Self { bullets: MAX_BULLETS }
   end
 end
 
 impl Weapon for Riffle
-  fn fire(self)
+  pub fn fire(self)
     if self.bullets > 0 then
       print("bang!")
       self.bullets -= 1
@@ -323,7 +323,7 @@ impl Weapon for Riffle
     end
   end
 
-  fn reload(self, magazine Magazine): boolean
+  pub fn reload(self, magazine Magazine): boolean
     print("reloading...")
     self.bullets = Self::MAX_BULLETS
     return true
