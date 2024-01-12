@@ -31,14 +31,14 @@ name = "Defuse" -- this will compile.
 
 ### Variable Type
 
-When we create a variable we can either explicitly declare its type or let the compiler to infer it.
+When we create a variable we can either explicitly declare its type or let the compiler infer it.
 
 ```fuse
 const g: number = 9.81 -- explicit type declaration.
-const pi = 3.14 -- implicit type infered from the assigned value.
+const pi = 3.14 -- implicit type inferred from the assigned value.
 ```
 
-Type inference can help us to write more consice, type safe code with no addition annotations. All these examples are using type inference.
+Type inference can help us to write more concise, type-safe code with no additional annotations. All these examples are using type inference.
 
 ```fuse
 const message = "Hello!"
@@ -58,7 +58,7 @@ const table = { value: "My Value" }
 const table: { value: string } = { value: "My Value" }
 ```
 
-In some situations we may want to explicitly annotate the type despite the inference, But in most cases it can result in a code which is more verbose than necessar.
+In some situations, we may want to explicitly annotate the type despite the inference, But in most cases, it can result in a code that is more verbose than necessary.
 
 ### Overview
 
@@ -77,7 +77,7 @@ const name: Type = value
   - All global variables are considered mutable since there is no universal method to provide global constants across all supported runtimes.
     - _With that said it is a trivial thing to implement user-level global constants by wrapping them inside of a struct or table._
   - All variables are `local` unless they are explicitly defined using the `global` keyword.
-  - Fuse actually checks for read access to all variables and will warn the developer to switch to a constant instead of a variable whenever possible.
+  - Fuse checks for write access to all variables and will warn the developer to switch to a constant instead of a variable whenever possible.
 
 2. Identifier, The name of our variable which should follow the [identifier rules](/docs/identifiers).
 3. Type, The type that can be any of the following and may be omitted in places where the compiler can infer the type from the assignment.
