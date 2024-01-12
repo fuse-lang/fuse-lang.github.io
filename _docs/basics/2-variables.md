@@ -5,28 +5,34 @@ permalink: /docs/variables/
 
 Here's an example of creating a constant and initializing it:
 
-```rust
-const name = "Sam"
+```fuse
+const name: string = "Sam"
 ```
 
-And this is an example of variable definition:
+This is an example of a variable definition:
 
-```rust
-let name = "Sam"
+```fuse
+let name: string = "Sam"
 ```
 
-First part of every variable definition is a keyword which can be either `let`, `const` or `global`, This keyword defines both the scope that which we are defining the variable in and the access level of the said variable.
-All variables are `local` unless they are explicitly defined using the `global` keyword.
-Fuse actully checks for read access to all variables and will warn the developer to switch to a constant instead of a variable whenever possible.
+Here are the different parts of a variable definition and assignment.
 
-The second part of it is the name of our variable which should follow the [variable naming rules](#naming).
+1. Keyword, which can be either `let`, `const`, or `global`.
+  - This keyword defines both the scope of the variable and also its mutability. A variable is either immutable(`const`) or mutable(`let`).
+  - All global variables are considered mutable since there is no universal method to provide global constants across all supported runtimes.
+    - _With that said it is a trivial thing to implement user-level global constants by wrapping them inside of a struct or table._
+  - All variables are `local` unless they are explicitly defined using the `global` keyword.
+  - Fuse actually checks for read access to all variables and will warn the developer to switch to a constant instead of a variable whenever possible.
 
-All values in Fuse are `first-class` values. It means that we can treat every value type in Fuse is assignable to variables, can be passed to functions, returned as results or get exported from a module.
+2. Identifier, The name of our variable which should follow the [identifier rules](/docs/identifiers).
+3. Type, The type that can be any of the following and may be omitted in places where the compiler can infer the type from the assignment.
+    - Primitive([string](/docs/string), [number](/docs/number), [boolean](/docs/boolean))
+    - Type Definition(/docs/type)
+    - Table
+    - Struct
+    - Trait
+    - Special Types(`void`, `any`, `unknown`, `never`, etc. see [advance types])
+4. Assignment Operator(`=`), This operator will act as the separator between the definition part of our variable and its initialization.
+5. Assignment, The last part of a variable definition is its actual assignment.
 
-In Fuse similar to Lua there are eight basic types: `nil`, `boolean`, `number`, `string`, `function`, `userdata`, `thread` and `table`. But in addition to these types we also introduced `ustring` which is a specific type for working with utf8 strings.
-
-When we
-
-<a name="naming" />
-### Variable Naming Rules
-
+__Note__: All values in Fuse are having `first-class` support. It means that they can be assigned to variables, have concrete types, passed to functions, returned as results, or exported from a module.
