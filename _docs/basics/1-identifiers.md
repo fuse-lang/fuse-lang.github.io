@@ -30,7 +30,7 @@ from       function   fn         if         impl       import
 in         let        match      pub        nil        not
 or         repeat     return     self       Self       static
 struct     then       trait      true       type       until
-when       while
+when       where      while
 ```
 
 #### Legacy Lua Keywords
