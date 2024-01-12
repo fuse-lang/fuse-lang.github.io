@@ -45,7 +45,7 @@ These following keywords aren't a part of the language but they are reserved to 
 
 ```
 abstract   async      await      catch      class      defer
-extend     finally    final      is         override   priv
+extends    finally    final      is         override   priv
 prot       satisfies  try        typeof     virtual    yield
 ```
 
