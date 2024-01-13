@@ -142,7 +142,7 @@ See [For Loop](/docs/loops/)
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 let index = 1
 while index < #numbers do
-  print($"Number at index ${index} is ${numbers[index]}")
+  print("Number at index ${index} is ${numbers[index]}")
   index += 1
 end
 ```
@@ -155,7 +155,7 @@ end
 let num = 1
 
 repeat
-  print($"num: ${num}")
+  print("num: ${num}")
   num += 1
 until num == 10
 
@@ -226,7 +226,7 @@ fn post_login_hooks(data: LoginData)
   if user == nil then
     print("User Not Found.")
   else
-    print($"Hello, ${user.display_name}")
+    print("Hello, ${user.display_name}")
   end
 end
 ```
@@ -235,7 +235,7 @@ Or using pattern-matching
 
 ```fuse
 const message = match user when
-  { display_name } then $"Hello, ${display_name}" end
+  { display_name } then "Hello, ${display_name}" end
   nil then "User Not Found." end
 end
 
