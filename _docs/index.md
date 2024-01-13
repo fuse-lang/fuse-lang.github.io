@@ -28,6 +28,8 @@ print("Hello World")
 print "Hello World"
 ```
 
+__Note__: Notice that we do not allow omitting parantecies for function calls.
+
 ### Fibonacci
 
 ##### Fuse
