@@ -74,7 +74,7 @@ __Note__: Raw strings do not support the string interpolation!
 The `ustring` type behaves identically to a normal `string` except for one key difference; `ustring` can hold any Unicode character and store it using `UTF-8` encoding. Many languages with support for Unicode have opted-in for `UTF-16` encoding(`C#` and `Java` come to mind). The reasoning behind it is that most characters in Unicode will fit in 2 bytes so we will pay less for following each character through the next byte(s). Another reason for this may be that Microsoft products use `UTF-16` as their encoding. So having a language that also works with `UTF-16` would make it easier to communicate with the Windows APIs.
 But `UTF-8` is more commonly used in the world of Unix-like operating systems and would have less memory impact in embedded devices.
 
-Unicode string literals start with an `u` but it is completely optional since there is nothing special about a unicode string literal compared to an ASCII one; The only difference is that string literals starting with an `u` will infer their type to be `ustring`(instead of defaulting to `string` type).
+Unicode string literals start with an `u` but it is completely optional since there is nothing special about a Unicode string literal compared to an ASCII one; The only difference is that string literals starting with an `u` will infer their type to be `ustring`(instead of defaulting to `string` type).
 The reason behind this lies in how different string encodings work. They are all just a string of bytes and that's why we call them `string`, So using `UTF-8`, `ASCII`, or any other encoding is in how we deal with these bytes and would have no effect on the literal definition itself.
 
 ```fuse
@@ -85,4 +85,21 @@ const hello: ustring = "こんにちは"
 const hello = "こんにちは" as ustring
 -- is same as
 const hello = string::from("こんにちは")
+```
+
+This rule is also applied to `multi-line` and `raw` strings.
+
+```fuse
+const a = u"""a multi
+line string"""
+
+const b = u'''another multi
+line string'''
+
+-- notice that u comes before r
+const c = ur#"a "raw"
+'string' with \unescaped \characters\"#
+
+const c = ur#'a "raw"
+'string' with \unescaped \characters\'#
 ```
