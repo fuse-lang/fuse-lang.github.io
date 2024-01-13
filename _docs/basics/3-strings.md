@@ -3,10 +3,10 @@ title: Strings
 permalink: /docs/strings/
 ---
 
-There are 2 types of strings in the Fuse language, [string](#string) and [ustring](#ustring); In this section we are going to explore these two variants of string type.
+There are 2 types of strings in the Fuse language, [string](#string) and [ustring](#ustring); In this section, we are going to explore these two variants of the string type.
 
 <a name="string" />
-### String
+### string
 
 The `string` type holds a sequence of `ASCII` characters and it can be created using single or double quotes.
 
@@ -25,7 +25,7 @@ You can put the value of an expression inside of a string using the `${expressio
 const str1 = "hello"
 const str2 = "world"
 
-assert("${str1}, ${str2}!" == "hello world!")
+assert("${str1}, ${str2}!" == "hello, world!")
 ```
 
 ### Mutliline strings
@@ -45,27 +45,44 @@ without any escaping!
 '''
 
 const text3 = '''Keep in mind that in these multi-line strings
-escaping still behaves similar to a noraml string.\nAnd in addition to that,
-You can also use ${string_interpolation} inside of them.
+escaping still behaves similarly to a normal string.\nAnd you can also
+use ${string_interpolation} inside of them.
 '''
 ```
 
 ### Raw strings
 
-In addition to the multi-line strings there is also a way to create string literals without any escaping at all!
-These string literals are called `raw` strings. We can define them with prefixing the string quotes with(`r`) and an arbitary number of hashes(`#`); How many hashes that are used in the begining of the string also mark its end, Since we do not escape anything inside of an raw string, This is the only way that we can have raw strings that contain `"#` in them.
+In addition to the multi-line strings, there is also a way to create string literals without any escaping at all!
+These string literals are called `raw` strings. We can define them by prefixing the string quotes with(`r`) and an arbitrary number of hashes(`#`); How many hashes are used at the beginning of the string also marks its end, Since we do not escape anything inside of an raw string, This is the only way that we can have raw strings that contain `"#` in them.
 
 ```fuse
-const unescaped1 = r#"I'm a raw string, I don't understand meaning of escaping using a \ character.
+const unescaped1 = r#"I'm a raw string, I don't understand the meaning of escaping using a \ character.
 I also don't treat "Quotes" and new lines
-different than any other characters..."#
+differently than any other characters..."#
 
 const unescaped2 = r##"I'm another raw string,
-But I can contain "# inside of me!
-"##
+But I can contain "# inside of me!"##
 
-const unescaped3 = r###"Yet another raw string,
-This one can contain "## in addition to "#
-"##
+const unescaped3 = r###'Yet another raw string,
+This one can contain '## in addition to '#.'###
 ```
 __Note__: Raw strings do not support the string interpolation!
+
+<a name="ustring" />
+### ustring
+
+The `ustring` type behaves identically to a normal `string` except for one key difference; `ustring` can hold any Unicode character and store it using `UTF-8` encoding. Many languages with support for Unicode have opted-in for `UTF-16` encoding(`C#` and `Java` come to mind). The reasoning behind it is that most characters in Unicode will fit in 2 bytes so we will pay less for following each character through the next byte(s). Another reason for this may be that Microsoft products use `UTF-16` as their encoding. So having a language that also works with `UTF-16` would make it easier to communicate with the Windows APIs.
+But `UTF-8` is more commonly used in the world of Unix-like operating systems and would have less memory impact in embedded devices.
+
+Unicode string literals start with an `u` but it is completely optional since there is nothing special about a unicode string literal compared to an ASCII one; The only difference is that string literals starting with an `u` will infer their type to be `ustring`(instead of defaulting to `string` type).
+The reason behind this lies in how different string encodings work. They are all just a string of bytes and that's why we call them `string`, So using `UTF-8`, `ASCII`, or any other encoding is in how we deal with these bytes and would have no effect on the literal definition itself.
+
+```fuse
+const hello = u"こんにちは"
+-- is same as
+const hello: ustring = "こんにちは"
+-- is same as
+const hello = "こんにちは" as ustring
+-- is same as
+const hello = string::from("こんにちは")
+```
