@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/fuse-lang/rouge.git
-  revision: c68f901e8d89a3c9f38bf187ad0fcd074a087e2f
+  revision: 678b420e671f9cce582347d541444cedeb583711
   tag: v3.26.0-fuse
   specs:
     rouge (3.26.0)
@@ -287,4 +287,4 @@ RUBY VERSION
    ruby 2.7.8p225
 
 BUNDLED WITH
-   2.2.31
+   2.4.22
