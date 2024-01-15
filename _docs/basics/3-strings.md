@@ -103,3 +103,12 @@ const c = ur#"a "raw"
 const c = ur#'a "raw"
 'string' with \unescaped \characters\'#
 ```
+
+### Concatenation
+
+In Fuse, we can contact any 2 strings together using the addition(`+`) operator, If one of the operands is a number it will implicitly get converted to a string. When concatenating strings with other types the compiler will try to find an implementation of the `Add` trait for that type which satisfies the concatenation otherwise it will produce a syntax error. Learn more on the [Operator Traits](/docs/ops) page.
+
+```fuse
+assert_eq("hello" + ", " + "world!", "hello, world!")
+assert_eq("i" + 18 + "n", "i18n")
+```
