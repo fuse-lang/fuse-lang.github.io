@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/fuse-lang/rouge.git
-  revision: 678b420e671f9cce582347d541444cedeb583711
+  revision: c53093883df9e4b09ebc131cdd9b8407a0c10368
   tag: v3.26.0-fuse
   specs:
     rouge (3.26.0)
