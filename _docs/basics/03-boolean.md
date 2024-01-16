@@ -5,7 +5,7 @@ permalink: /docs/boolean/
 
 The type `boolean` represents boolean values, These can be either `true` or `false`.
 
-Booleans support support all [Logical Operators](/docs/logical-ops) as expected.
+Booleans support all [Logical Operators](/docs/logical-ops) as expected.
 
 ```fuse
 const my_true: boolean = true
