@@ -14,6 +14,7 @@
   - numbers
   - strings
   - functions
+  - tuples
   - logical-ops
   - tables
   - structs

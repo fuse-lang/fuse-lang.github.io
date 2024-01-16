@@ -1,7 +1,6 @@
 ---
 title: Functions
 permalink: /docs/functions/
-description: Functions
 ---
 
 Functions are the most essential building block of Fuse, Since you can create anything even numbers using functions alone. As mentioned earlier in the introduction, We treat functions just like every other values; They can be assigned to variables, Passed to functions as arguments or get returned from another function.
@@ -29,13 +28,69 @@ fn fun()
   print("functions are fun!")
 end
 -- or be explicit
-fn fun(): ()
+fn fun() -> ()
   print("functions are fun!")
   return ()
 end
+-- single return type
+fn fun() -> (string)
+  return ("functions are fun!")
+end
+-- multiple return type
+fn fun() -> (string, number, boolean)
+  return ("Hi!", 42, true)
+end
 ```
 
-__Note__: Unit is just a tuple with no values, Since any tuple without a value is equal to any other empty tuple therefore at any time there can only exist one of such tuples. This can also explain the reason behind the syntax of `Unit`.
+Alternatively you can omit parantecies in the return statement.
+
+```fuse
+fn fun() -> ()
+  -- ...
+  return
+end
+
+fn fun() -> (string)
+  -- ...
+  return "functions are fun!"
+end
+
+fn fun() -> (string, number, boolean)
+  -- ...
+  return "Hi!", 42, true
+end
+```
+
+Fuse functions use syntax of a `tuple` as its return value to abstract away the concept of multiple return values, Return statement will implicitly wrap the return values in a tuple type. In addition to having a more concreate type signture we also get to keep all of a functions return values inside a single variable that we can expand later.
+
+```fuse
+fn fun() -> (string, number, boolean)
+-- ..
+end
+
+const (str, num, bool) = fun()
+
+------------------------------
+
+const return_values = fun()
+const (str, num, bool) return_values
+```
+
+Tuples containing only one value are `eager` to expand, that's why we still can assign return values of functions into a variable without the surrounding parantecies.
+
+```fuse
+const value: string = func()
+```
+
+We can annotate the type of assigned variable as tuple to prevent assignment from expanding it.
+
+```fuse
+const tuple: (string) = func()
+```
+
+We will learn more about [Tuples](/docs/tuples) in the next page.
+
+__Note__: Unit(`()`) is just a tuple with no values, Since any tuple without a value is equal to any other empty tuple therefore at any time there can only exist one of such tuples. This can also explain the reason behind the syntax of `Unit`.
 
 Alternatively a function with only a single line of body can be expressed using the following syntax.
 
@@ -62,7 +117,7 @@ get_user().username()
 A function can accept zero, one or many parameters.
 
 ```fuse
-fn sum(a: number, b: number): number => a + b
+fn sum(a: number, b: number) -> (number) => a + b
 
 assert_eq(sum(10, 20), 30)
 ```
@@ -78,6 +133,37 @@ assert_eq(lerp(0, 100), 100)
 assert_eq(lerp(0, 100, 0.5), 50)
 ```
 
+We can also pass arguments using their names, It can be extreamly useful when we have a lot of `nil` and `boolean` arguments which can make it really hard to read.
+
+```fuse
+fn configure(
+  backend: Backend,
+  enable: boolean,
+  service: Service | nil,
+  api_key: string | nil,
+  policies: Policy[] | nil = nil,
+  formatter: Formatter | nil = nil,
+  options: AdditionalOptions | nil = nil
+  development_mode: boolean = flase,
+  serialization_type: SerializationType = SerializationType.Binary)
+  -- function magic happens here!
+end
+
+-- ...
+
+-- calling without named parameters
+configure(my_backend, true, my_service, nil, nil, nil, nil, false, SerializationType.Json)
+-- calling with named parameters
+configure(
+  my_backend,
+  enable: true,
+  my_service,
+  api_key: nil,
+  serialization_type: SerializationType.Json)
+```
+
+__Note__: While it is not necessary to name all arguments, after omitting the first parameter with default value you have to name all subsecuent arguments.
+
 If a parameter with a default value proceeds a parameter with no default, The only way to use the default value is to call the function with named arguments.
 
 ```fuse
@@ -90,3 +176,5 @@ greeting(name: "Sam")
 
 
 ### Function Type Expression
+
+As we have read earlier, Fuse have first-class support for functions that's why we should be able to talk about type of a function in our code without any extra effort.
