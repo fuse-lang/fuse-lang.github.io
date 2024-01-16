@@ -10,10 +10,12 @@
   - intro
   - identifiers
   - variables
-  - strings
+  - boolean
   - numbers
+  - strings
   - tables
   - functions
+  - logical-ops
   - structs
   - traits
 
