@@ -13,9 +13,9 @@
   - boolean
   - numbers
   - strings
-  - tables
   - functions
   - logical-ops
+  - tables
   - structs
   - traits
 
