@@ -3,9 +3,9 @@ title: Functions
 permalink: /docs/functions/
 ---
 
-Functions are the most essential building block of Fuse, Since you can create anything even numbers using functions alone. As mentioned earlier in the introduction, We treat functions just like every other values; They can be assigned to variables, Passed to functions as arguments or get returned from another function.
+Functions are the most essential building block of Fuse Since you can create anything even numbers using functions alone. As mentioned earlier in the introduction, We treat functions just like every other value; They can be assigned to variables, Passed to functions as arguments, or returned from another function.
 
-There any many different ways to describe a function in Fuse, But wether it is a local function, a function exported from another module, a struct or trait method, even a function imported from a Lua library they are all first-class types and will follow the same rules.
+There any many different ways to describe a function in Fuse, But whether it is a local function, a function exported from another module, a struct or trait method, or even a function imported from a Lua library they are all first-class types and will follow the same rules.
 
 ### Function Declaration
 
@@ -21,7 +21,7 @@ fn fun()
 end
 ```
 
-A function can return either one or many values. Functions without a return statement will implicitl return a Unit(`()`) value. If a return type isn't provided the compiler will assume the return type to be `()`.
+A function can return either one or many values. Functions without a return statement will implicitly return a Unit(`()`) value. If a return type isn't provided the compiler will assume the return type to be `()`.
 
 ```fuse
 fn fun()
@@ -42,7 +42,7 @@ fn fun() -> (string, number, boolean)
 end
 ```
 
-Alternatively you can omit parantecies in the return statement.
+Alternatively, you can omit parantecies in the return statement.
 
 ```fuse
 fn fun() -> ()
@@ -61,7 +61,7 @@ fn fun() -> (string, number, boolean)
 end
 ```
 
-Fuse functions use syntax of a `tuple` as its return value to abstract away the concept of multiple return values, Return statement will implicitly wrap the return values in a tuple type. In addition to having a more concreate type signture we also get to keep all of a functions return values inside a single variable that we can expand later.
+Fuse functions use the syntax of a `tuple` as its return value to abstract away the concept of multiple return values, Return statement will implicitly wrap the return values in a tuple type. By doing so in addition to having a more concrete type signature, we also get to keep all of a function's return values inside a single variable that we can expand later.
 
 ```fuse
 fn fun() -> (string, number, boolean)
@@ -76,23 +76,23 @@ const return_values = fun()
 const (str, num, bool) return_values
 ```
 
-Tuples containing only one value are `eager` to expand, that's why we still can assign return values of functions into a variable without the surrounding parantecies.
+Tuples containing only one value are `eager` to expand, that's why we still can assign return values of functions that return a single value into a variable without the surrounding them in the parantecies.
 
 ```fuse
 const value: string = func()
 ```
 
-We can annotate the type of assigned variable as tuple to prevent assignment from expanding it.
+We can annotate the type of assigned variable as a tuple to prevent the assignment from expanding it.
 
 ```fuse
 const tuple: (string) = func()
 ```
 
-We will learn more about [Tuples](/docs/tuples) in the next page.
+We will learn more about [Tuples](/docs/tuples) on the next page.
 
 __Note__: Unit(`()`) is just a tuple with no values, Since any tuple without a value is equal to any other empty tuple therefore at any time there can only exist one of such tuples. This can also explain the reason behind the syntax of `Unit`.
 
-Alternatively a function with only a single line of body can be expressed using the following syntax.
+Functions with only a single line of body can be expressed using the following syntax.
 
 ```fuse
 fn fun() => print("functions are fun!")
@@ -114,7 +114,7 @@ get_user().username()
 
 #### Parameters
 
-A function can accept zero, one or many parameters.
+A function can accept zero, one, or many parameters.
 
 ```fuse
 fn sum(a: number, b: number) -> (number) => a + b
@@ -122,7 +122,7 @@ fn sum(a: number, b: number) -> (number) => a + b
 assert_eq(sum(10, 20), 30)
 ```
 
-Function parameters can have a default value which means they are not required to be passed in. The default value must be compile time constant.
+Function parameters can have a default value which means they are not required to be passed in. The default value must be compile-time constant.
 
 ```fuse
 fn lerp(v0: number, v1: number, t: number = 1): number
@@ -133,7 +133,7 @@ assert_eq(lerp(0, 100), 100)
 assert_eq(lerp(0, 100, 0.5), 50)
 ```
 
-We can also pass arguments using their names, It can be extreamly useful when we have a lot of `nil` and `boolean` arguments which can make it really hard to read.
+We can also pass arguments using their names, It can be extremely useful when we have a lot of `nil` and `boolean` arguments which can make it hard to read.
 
 ```fuse
 fn configure(
@@ -144,7 +144,7 @@ fn configure(
   policies: Policy[] | nil = nil,
   formatter: Formatter | nil = nil,
   options: AdditionalOptions | nil = nil
-  development_mode: boolean = flase,
+  development_mode: boolean = false,
   serialization_type: SerializationType = SerializationType.Binary)
   -- function magic happens here!
 end
@@ -162,7 +162,7 @@ configure(
   serialization_type: SerializationType.Json)
 ```
 
-__Note__: While it is not necessary to name all arguments, after omitting the first parameter with default value you have to name all subsecuent arguments.
+__Note__: While it is not necessary to name all arguments, after omitting the first parameter with default value you have to name all subsequent arguments.
 
 If a parameter with a default value proceeds a parameter with no default, The only way to use the default value is to call the function with named arguments.
 
@@ -177,4 +177,4 @@ greeting(name: "Sam")
 
 ### Function Type Expression
 
-As we have read earlier, Fuse have first-class support for functions that's why we should be able to talk about type of a function in our code without any extra effort.
+As we have read earlier, Fuse has first-class support for functions that's why we should be able to talk about the type of function in our code without any extra effort.
