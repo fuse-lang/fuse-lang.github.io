@@ -3,7 +3,7 @@ title: Tuples
 permalink: /docs/tuples/
 ---
 
-In Fuse a `Tuple` is a finite sequence of items, Tuples can be created using the tuple constructor or writing values inside of parantecies separated by commas.
+In Fuse a `Tuple` is a finite sequence of items, Tuples can be created using the tuple constructor or writing values inside of parantecies separated by commas. Once a tuple is created we can not change its values or number of items inside the said tuple.
 
 ```fuse
 const tuple: (number, number, number) = (1, 2, 3)
