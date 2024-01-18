@@ -16,13 +16,14 @@
   - functions
   - tuples
   - logical-ops
-  - tables
   - structs
+  - tables
   - traits
+  - types
 
 - title: Fuse Standard Library
   docs:
   - array
   - list
-  - map
-  - set
+  - hashmap
+  - hashset

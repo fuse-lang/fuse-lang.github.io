@@ -21,7 +21,7 @@ There can only exist one tuple of zero values(`0-tuple`) also known as `Unit` an
 
 ### Retrieving Values
 
-We can retrieve values in a tuple in 2 ways, We can either use the dot(`.`) notion followed by the position of an item or via the array accessor operator(`[]`).
+We can retrieve values in a tuple in 2 ways, We can either use the dot(`.`) notion followed by the position of an item or via the `Index` operator(`[]`).
 
 ```fuse
 const tuple = (1, 2, 3)
