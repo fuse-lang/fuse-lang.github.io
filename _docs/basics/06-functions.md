@@ -65,7 +65,7 @@ Tuples that are immediately expanded will optimize away in runtimes with support
 
 
 Functions with only a single line of body can be expressed using the following syntax.
-15
+
 ```fuse
 fn fun() => print("functions are fun!")
 ```
@@ -146,7 +146,61 @@ end
 greeting(name: "Sam")
 ```
 
+### Closures
+
+In Fuse, closures are defined using the exact syntax for functions but omitting the name.
+
+```fuse
+const closure = fn(a: number, b: number): number => a + b
+```
+
+While it may look like an anonymous function in other languages it is in fact a true closure that can capture values from its scope and also be inlined directly in the call site.
+
+```fuse
+fn lcg(seed: number)
+  const a = 1140671485
+  const c = 128201163
+  const m = 2 ^ 24
+
+  let rand = seed
+  return fn()
+    rand = (a * rand + c) % m
+    return rand
+  end
+end
+
+const random = lcg(1)
+
+assert_eq(random(), 10581448)
+assert_eq(random(), 11595892)
+assert_eq(random(), 1323120)
+assert_eq(random(), 16081019)
+```
 
 ### Function Type Expression
 
-As we have read earlier, Fuse has first-class support for functions that's why we should be able to talk about the type of function in our code without any extra effort.
+As we have read earlier, Fuse has first-class support for functions that's why we should be able to talk about the type of function in our code without any extra effort. We can annotate the type of a function with the exact syntax used for creating it.
+
+```fuse
+fn fun(a: number, b: number) -> number => a + b
+
+const my_fun: fn(number, number) -> number = fun
+```
+
+Since now we have a way of expressing types of functions it is possible to have them as a function parameter or its return type. This notion of higher-order functions enables us to create more declarative programs.
+
+Here's a possible implementation of the `filter` function for numbers.
+
+```fuse
+fn filter(nums: number[], predicate: fn(number) -> boolean) -> number[]
+  const result: number[] = []
+
+  for i, num in ipairs(nums) do
+    if (predicate(num)) then
+      result.insert(num)
+    end
+  end
+
+  return result
+end
+```
