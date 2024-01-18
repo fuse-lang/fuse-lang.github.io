@@ -35,7 +35,7 @@ __Note__: Notice that we do not allow omitting parantecies for function calls.
 ##### Fuse
 
 ```fuse
-fn fibonacci(n: number): number
+fn fibonacci(n: number) -> number
     if n < 2 then 
         return n
     else 
@@ -85,7 +85,7 @@ struct Person
 end
 
 impl Person
-  pub fn new(name: string, age: number): Self
+  pub fn new(name: string, age: number) -> Self
     return Self { name, age }
   end
 

@@ -88,7 +88,7 @@ Fuse keeps the original syntax of the Lua language with one exception functions 
 Here is a function that will take two `number` and will return a `number`:
 
 ```fuse
-function sum(a: number, b: number): number
+function sum(a: number, b: number) -> number
   return a + b
 end
 ```
@@ -96,7 +96,7 @@ end
 In addition to that you can also use the `fn` keyword instead of the longer version of it.
 
 ```fuse
-fn sum(a: number, b: number): number
+fn sum(a: number, b: number) -> number
   return a + b
 end
 ```
@@ -104,7 +104,7 @@ end
 For functions with a single expression body, you can omit the `end` keyword and use the `=>` sign to assign the return value of the function.
 
 ```fuse
-fn sum(a: number, b: number): number => a + b
+fn sum(a: number, b: number) -> number => a + b
 ```
 
 ### Conditional Expressions
@@ -182,7 +182,7 @@ end
 ### Match Expression
 
 ```fuse
-fn handle_request(req: Request): string
+fn handle_request(req: Request) -> string
   match req when
     { status: 200 } then req.body end
     { status } if status >= 400 and status < 500 then "User Error" end
@@ -212,7 +212,7 @@ Fuse by default is a `nil` safe language, We do not let any nil values be passed
 This function will return `nil` if the user doesn't exist.
 
 ```fuse
-fn get_user(id: number): User | nil
+fn get_user(id: number) -> User | nil
   -- ...
 end
 ```
@@ -284,7 +284,7 @@ struct Book
 end
 
 impl Book
-  pub fn new(name: string, author: string, pages: number): Self
+  pub fn new(name: string, author: string, pages: number) -> Self
     return Self { name, author, pages }
   end
 end
@@ -298,7 +298,7 @@ Traits are used to share code between structs. They are in concept similar to `i
 ```fuse
 trait Weapon
   fn fire(self)
-  fn reload(self, magazine: Magazine): boolean
+  fn reload(self, magazine: Magazine) -> boolean
 end
 
 struct Riffle
@@ -308,7 +308,7 @@ end
 impl Riffle
   const MAX_BULLETS: number = 30
 
-  pub fn new(): Self
+  pub fn new() -> Self
     return Self { bullets: MAX_BULLETS }
   end
 end
@@ -323,7 +323,7 @@ impl Weapon for Riffle
     end
   end
 
-  pub fn reload(self, magazine Magazine): boolean
+  pub fn reload(self, magazine Magazine) -> boolean
     print("reloading...")
     self.bullets = Self::MAX_BULLETS
     return true
