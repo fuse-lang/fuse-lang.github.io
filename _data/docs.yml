@@ -27,6 +27,5 @@
 - title: Fuse Standard Library
   docs:
   - array
-  - list
   - hashmap
   - hashset
