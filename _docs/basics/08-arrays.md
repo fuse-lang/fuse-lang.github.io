@@ -1,16 +1,11 @@
 ---
-title: Collections
-permalink: /docs/collections/
+title: Arrays
+permalink: /docs/arrays/
 ---
 
-Fuse has many different types of collections, In this page, we are going to explore some of the most useful data structures in the Fuse core library.
+Arrays are the most basic collection type in the Fuse language, They can hold a finite number of elements with the same type. Unlike the other collections, we do not need to import the `Array` type.
 
 __Note__: All collections in the Fuse, Similar to Lua have 1-base indices; This means in Fuse we start from index `1` and go up to the index `n` as opposed to starting from `0` and going up to `n-1`.
-
-<a name="array" />
-### Array
-
-Arrays are the most basic collection type in the Fuse language, They can hold a finite number of elements with the same type. Unlike the other collections, we do not need to import the `Array` type.
 
 We can create an array using the brackets(`[]`) and comma separated values.
 
@@ -86,8 +81,3 @@ export fn settings() -> string[const]
   return settings as string[const]
 end
 ```
-
-<a name="hashmap" />
-### HashMap
-
-`HashMap` is a data structure 
