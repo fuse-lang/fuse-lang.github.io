@@ -21,7 +21,7 @@ fn fun()
 end
 ```
 
-A function can return exactly one value. Functions without a return statement will implicitly return a Unit(`()`) value. If a return type isn't provided the compiler will assume the return type to be `()`.
+A function can return exactly one value. Functions without a return statement will implicitly return a Unit(`()`) value. If a return type isn't provided the compiler will try to infer the return type from the first returning branch of function otherwise will assume the return type to be `()`.
 
 ```fuse
 fn fun()
