@@ -38,7 +38,7 @@ fn fun() -> string
 end
 ```
 
-Fuse supports the concept of tuples which can be used in place of multiple return values. By doing so in addition to having a more concrete type signature for these functions we also get to keep all return values in one places instead of immeadiatly breaking them into the indivisual return values.
+Fuse supports the concept of tuples which can be used in place of multiple return values. By doing so in addition to having a more concrete type signature for these functions we also get to keep all return values in one place instead of immediately breaking them into the individual return values.
 
 ```fuse
 fn fun() -> (string, number, boolean)
@@ -51,7 +51,7 @@ const str, num, bool = result
 const str, num, bool = fun()
 ```
 
-Return statement will implicitly wrap the return values in a tuple type if needed.
+The return statement will implicitly wrap the return values in a tuple type if needed.
 
 ```fuse
 fn fun() -> (string, number, boolean)
@@ -59,11 +59,13 @@ fn fun() -> (string, number, boolean)
 end
 ```
 
-We will learn more about [Tuples](/docs/tuples) in upcomming pages.
+__Note__: Unit(`()`) is just a tuple with no values, Since any tuple without a value is equal to any other empty tuple therefore at any time there can only exist one of such tuples. This can also explain the reason behind the syntax of `Unit`.
+
+Tuples that are immediately expanded will optimize away in runtimes with support for multiple return values. Learn more about [Tuples](/docs/tuples).
 
 
 Functions with only a single line of body can be expressed using the following syntax.
-
+15
 ```fuse
 fn fun() => print("functions are fun!")
 ```
