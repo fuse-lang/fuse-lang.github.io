@@ -89,7 +89,7 @@ get_user().username()
 A function can accept zero, one, or many parameters.
 
 ```fuse
-fn sum(a: number, b: number) -> (number) => a + b
+fn sum(a: number, b: number) -> number => a + b
 
 assert_eq(sum(10, 20), 30)
 ```
@@ -97,7 +97,7 @@ assert_eq(sum(10, 20), 30)
 Function parameters can have a default value which means they are not required to be passed in. The default value must be compile-time constant.
 
 ```fuse
-fn lerp(v0: number, v1: number, t: number = 1): number
+fn lerp(v0: number, v1: number, t: number = 1) -> number
   return v0 + t * (v1 - v0)
 end
 
