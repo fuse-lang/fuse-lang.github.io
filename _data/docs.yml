@@ -15,11 +15,14 @@
   - strings
   - functions
   - tuples
+  - collections
   - logical-ops
+  - control-flow
   - structs
   - tables
   - traits
   - types
+  - generic
 
 - title: Fuse Standard Library
   docs:
