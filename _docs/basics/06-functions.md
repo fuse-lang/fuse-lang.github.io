@@ -21,7 +21,7 @@ fn fun()
 end
 ```
 
-A function can return either one or many values. Functions without a return statement will implicitly return a Unit(`()`) value. If a return type isn't provided the compiler will assume the return type to be `()`.
+A function can return exactly one value. Functions without a return statement will implicitly return a Unit(`()`) value. If a return type isn't provided the compiler will assume the return type to be `()`.
 
 ```fuse
 fn fun()
@@ -32,65 +32,35 @@ fn fun() -> ()
   print("functions are fun!")
   return ()
 end
--- single return type
-fn fun() -> (string)
-  return ("functions are fun!")
-end
--- multiple return type
-fn fun() -> (string, number, boolean)
-  return ("Hi!", 42, true)
-end
-```
 
-Alternatively, you can omit parantecies in the return statement.
-
-```fuse
-fn fun() -> ()
-  -- ...
-  return
-end
-
-fn fun() -> (string)
-  -- ...
+fn fun() -> string
   return "functions are fun!"
 end
-
-fn fun() -> (string, number, boolean)
-  -- ...
-  return "Hi!", 42, true
-end
 ```
 
-Fuse functions use the syntax of a `tuple` as its return value to abstract away the concept of multiple return values, Return statement will implicitly wrap the return values in a tuple type. By doing so in addition to having a more concrete type signature, we also get to keep all of a function's return values inside a single variable that we can expand later.
+Fuse supports the concept of tuples which can be used in place of multiple return values. By doing so in addition to having a more concrete type signature for these functions we also get to keep all return values in one places instead of immeadiatly breaking them into the indivisual return values.
 
 ```fuse
 fn fun() -> (string, number, boolean)
--- ..
+  return ("value", 42, true)
 end
-
-const (str, num, bool) = fun()
-
-------------------------------
-
-const return_values = fun()
-const (str, num, bool) return_values
+-------------------------------------
+const result = fun()
+const str, num, bool = result
+-- or assign them directly
+const str, num, bool = fun()
 ```
 
-Tuples containing only one value are `eager` to expand, that's why we still can assign return values of functions that return a single value into a variable without the surrounding them in the parantecies.
+Return statement will implicitly wrap the return values in a tuple type if needed.
 
 ```fuse
-const value: string = func()
+fn fun() -> (string, number, boolean)
+  return "value", 42, true
+end
 ```
 
-We can annotate the type of assigned variable as a tuple to prevent the assignment from expanding it.
+We will learn more about [Tuples](/docs/tuples) in upcomming pages.
 
-```fuse
-const tuple: (string) = func()
-```
-
-We will learn more about [Tuples](/docs/tuples) on the next page.
-
-__Note__: Unit(`()`) is just a tuple with no values, Since any tuple without a value is equal to any other empty tuple therefore at any time there can only exist one of such tuples. This can also explain the reason behind the syntax of `Unit`.
 
 Functions with only a single line of body can be expressed using the following syntax.
 
