@@ -8,7 +8,7 @@ The best way to understand `Table` is to think of it as 2 parts, A sorted `Array
 __Note__: Tables are the native data structures of Lua and while we offer a higher lever more verbose way of defining structures using the `struct` keyword we still need to fall back to a table from time to time. They are an integral part of interacting with the codes written in Lua as they will expect tables and might return one to the caller.
 
 
-A table can be defined using brackets(`{}`).
+A table can be defined using curly brackets(`{}`).
 
 ```fuse
 const table: Table = {
