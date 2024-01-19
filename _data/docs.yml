@@ -13,12 +13,12 @@
   - booleans
   - numbers
   - strings
+  - logical-ops
+  - control-flow
   - functions
   - tuples
   - arrays
   - enums
-  - logical-ops
-  - control-flow
   - structs
   - traits
   - tables
