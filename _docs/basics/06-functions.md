@@ -204,3 +204,137 @@ fn filter(nums: number[], predicate: fn(number) -> boolean) -> number[]
   return result
 end
 ```
+
+### Inline
+
+Using higher-order functions imposes some performance penalties, Each function needs to capture values accessed in its body and store them along with the closure which will generate excess garbage and increase the memory usage of our program. It also means that the CPU has to do more jumping around to call our function and return its value to the calling site.
+
+In many situations we can prevent this overhead by inlining our functions, It can be done by marking the function with the `inline` attribute.
+
+```fuse
+#[inline]
+fn compute(num: number) -> number
+  return num ^ 2
+end
+
+for i = 0, 100_000_000 do
+  print(compute(i))
+end
+```
+
+It will result in a code similar to if it was written inside of the loop.
+
+```fuse
+for i = 0, 100_000_000 do
+  print(i ^ 2)
+end
+```
+
+Inlining a function will grow the size of our Lua code but it will pay off by improved execution speed especially when used in loops.
+
+We can also use inline for function parameters that are function-type expressions.
+
+```fuse
+const execution_time = get_execution_time()
+
+fn execute(#[inline] func: fn() -> boolean)
+  const time = get_time()
+  if func(time) then
+    print("Function has been executed")
+  end
+end
+
+execute(fn(time) => if time > execution_time then true else false end)
+```
+
+The `inline` attribute will hint to the compiler that we prefer this function get inlined, But in some situations, the compiler may fail to do so for example in the example below it isn't possible to to inline the passed closure to the `execute` function since it captures `is_admin` which is a local variable to the `run` function.
+
+```fuse
+const execution_time = get_execution_time()
+
+fn execute(#[inline] func: fn() -> boolean)
+  const time = get_time()
+  if func(time) then
+    print("Function has been executed")
+  end
+end
+
+fn run()
+  const is_admin = get_user().role == Role::Admin
+  execute(fn(time) => if is_admin and time > execution_time then true else false end)
+end
+
+run()
+```
+
+If the compiler tries to inline the `func` closure it will result in a transformed code like this:
+
+```fuse
+const execution_time = get_execution_time()
+
+fn execute()
+  const time = get_time()
+  if is_admin and time > execution_time then -- notice is_admin dosn't exists here!
+    print("Function has been executed")
+  end
+end
+
+fn run()
+  const is_admin = get_user().role == Role::Admin
+  execute()
+end
+
+run()
+```
+
+Since we can not access the captured value `is_admin` in the execution site of our `func` function, the Compiler will fail to inline this closure and will fall back to using a normal closure. We can solve this by inlining the whole `execute` function instead of just the closure parameter used by it.
+
+```fuse
+const execution_time = get_execution_time()
+
+#[inline]
+fn execute(func: fn() -> boolean)
+  const time = get_time()
+  if func(time) then
+    print("Function has been executed")
+  end
+end
+
+fn run()
+  const is_admin = get_user().role == Role::Admin
+  execute(fn(time) => if is_admin and time > execution_time then true else false end)
+end
+
+run()
+```
+
+Now that the compiler will inline the `execute` function we have access to all of our captured values inside our closure and it will result in a code as if we have written this instead:
+
+```fuse
+const execution_time = get_execution_time()
+
+fn run()
+  const is_admin = get_user().role == Role::Admin
+  const time = get_time()
+  if is_admin and time > execution_time then
+    print("Function has been executed")
+  end
+end
+
+run()
+```
+
+__Note__: Depending on the code structure the compiler may decide to inline the `execute` function even if it is not marked as `inline`. In this example, we assume that there is no optimization happening by the compiler which isn't always the case.
+
+### No Inline(`#[inline(never)]`)
+
+By default all closures passed to an inline function will also get inlined, This behavior can be prevented by explicitly marking the parameter with the `inline(never)` attribute.
+
+```fuse
+#[inline]
+fn func(a: () -> boolean, #[inline(never)] b: () -> number)
+  -- ...
+end
+```
+
+__Note__: The `inline` attribute does not guarantee the function being inlined, It will hint to the compiler that it should either try to inline the function in case of `#[inline]` or it should prevent it from being inlined in case of `#[inline(never)]`. When a function hasn't been marked explicitly the compiler will decide whether it should be kept intact or get inlined at the call site.
