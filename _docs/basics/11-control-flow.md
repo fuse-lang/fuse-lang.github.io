@@ -56,3 +56,15 @@ fn validate(email: string) -> boolean
   end
 end
 ```
+
+### Match Expression
+
+The `match` expression can be used to exhaustively match a variable with its different possible values,
+
+If you are are not familiar with the concept of `pattern matching` you can think of it as some kind of extended `switch ... case` expression.
+
+```fuse
+match tuple when
+  ()
+end
+```

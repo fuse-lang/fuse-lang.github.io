@@ -16,6 +16,7 @@
   - functions
   - tuples
   - arrays
+  - enums
   - logical-ops
   - control-flow
   - structs

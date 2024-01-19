@@ -8,7 +8,7 @@ This documentation is structured so that it can be read from top to bottom if yo
 ### Hello World
 
 After installing the Fuse you have 2 options to use it, either using `fuse` as your Lua interpreter or compiling your code into pure Lua code with the help of the `fusec` command.
-So let's create a file called `hello.fuse`, You can also call it `hello.fu` since Fuse supports both of these file extensions, Now let's write a little hello world program.
+So let's create a file called `hello.fuse`, Now let's write a little hello world program.
 
 ```typescript
 print("Hello, World!")
