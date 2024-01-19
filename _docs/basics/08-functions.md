@@ -338,3 +338,4 @@ end
 ```
 
 __Note__: The `inline` attribute does not guarantee the function being inlined, It will hint to the compiler that it should either try to inline the function in case of `#[inline]` or it should prevent it from being inlined in case of `#[inline(never)]`. When a function hasn't been marked explicitly the compiler will decide whether it should be kept intact or get inlined at the call site.
+

@@ -60,3 +60,4 @@ Logical operators don't support operator overloading and they do short-circuit t
 
 This isn't necessarily the case for Fuse as we have a lot of flexibility because of running in a VM, We just don't like the idea of changing the meaning behind logical operations.
 Instead because of leaner logical operation, We get to treat all values except `false` and `nil` as truthy values which in return resolve most use cases for logical operator overloading. For other situations using a member function is going to produce more readable code and will prevent many bad design decisions we have seen in other languages such as `C++`.
+
