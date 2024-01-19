@@ -188,7 +188,7 @@ fn handle_request(req: Request) -> string
     { status } if status >= 400 and status < 500 then "User Error" end
     { status } if status >= 500 and status < 600 then "Server Error" end
     { status: 900 } then "Unknown Error" end
-    _ then "Unknown Error" end
+    else "Unknown Error" end
   end
 end
 ```
@@ -236,7 +236,7 @@ Or using pattern-matching
 ```fuse
 const message = match user when
   { display_name } then "Hello, ${display_name}" end
-  nil then "User Not Found." end
+  else "User Not Found." end
 end
 
 print(message)
