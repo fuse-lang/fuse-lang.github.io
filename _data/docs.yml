@@ -14,11 +14,12 @@
   - numbers
   - strings
   - logical-ops
-  - control-flow
+  - if-expression
   - functions
   - tuples
   - arrays
   - enums
+  - pattern-matching
   - structs
   - traits
   - tables
