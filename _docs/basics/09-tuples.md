@@ -61,5 +61,28 @@ A tuple can be expanded into its individual values using the following syntax.
 
 ```fuse
 const tuple = (1, 2, 3)
-const a, b, c = tuple
+const (a, b, c) = tuple
+```
+
+If we drop the definition keyword we can assign values to mutable variables already defined in our scope.
+
+```fuse
+let a: number = 0
+let b: number = 0
+let c: number = 0
+
+-- ...
+
+(a, b, c) = tuple
+```
+
+We can also mix and match new variable definitions with assignment to old variables, For this purpose we simply drop the variable definition keyword and instead write it for each new individual variable definitions inside parantecies.
+
+```fuse
+let a: number = 0
+let c: number = 0
+
+-- ...
+
+(a, const b, c) = tuple
 ```

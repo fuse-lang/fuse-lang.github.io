@@ -21,7 +21,7 @@ fn fun()
 end
 ```
 
-A function can return exactly one value. Functions without a return statement will implicitly return a Unit(`()`) value. If a return type isn't provided the compiler will try to infer the return type from the first returning branch of function otherwise will assume the return type to be `()`.
+A function can return exactly one value. Functions without a return statement will implicitly return their last expression value. If a return type isn't provided the compiler will try to infer the return type from the first returning branch of function otherwise will assume the return type to be Unit(`()`).
 
 ```fuse
 fn fun()
@@ -34,28 +34,38 @@ fn fun() -> ()
 end
 
 fn fun() -> string
-  return "functions are fun!"
+  "functions are fun!"
 end
 ```
 
 Fuse supports the concept of tuples which can be used in place of multiple return values. By doing so in addition to having a more concrete type signature for these functions we also get to keep all return values in one place instead of immediately breaking them into the individual return values.
 
 ```fuse
+fn fun()
+  ("value", 42, true)
+end
+-- same as
 fn fun() -> (string, number, boolean)
   return ("value", 42, true)
 end
 -------------------------------------
 const result = fun()
-const str, num, bool = result
+const (str, num, bool) = result
 -- or assign them directly
-const str, num, bool = fun()
+const (str, num, bool) = fun()
 ```
 
-The return statement will implicitly wrap the return values in a tuple type if needed.
+If we don't want the last expression to be returned, We should either return explicitly or annotate our function with Unit return type.
 
 ```fuse
-fn fun() -> (string, number, boolean)
-  return "value", 42, true
+-- so either we return `()` explicitly
+fn fun()
+  ("value", 42, true)
+  return ()
+end
+-- or annotate the function as such
+fn fun() -> ()
+  ("value", 42, true)
 end
 ```
 
@@ -196,7 +206,7 @@ fn filter(nums: number[], predicate: fn(number) -> boolean) -> number[]
   const result: number[] = []
 
   for i, num in ipairs(nums) do
-    if (predicate(num)) then
+    if predicate(num) then
       result.insert(num)
     end
   end
