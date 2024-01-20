@@ -36,26 +36,35 @@ assert_eq(table["Key2"], "Value2")
 assert_eq(table["Key3"]: "Value3")
 ```
 
-### Iteration
+### Iterators
 
-Tables can be iterated in 2 ways, If we only want to iterate over the items with numeric indices we can use the `ipairs` function.
+Tables by default don't implement the `IntoIterator` trait, It means that we can not iterate them similarly to other collections.
 
 ```fuse
-for i, value in ipairs(table) do
-  print('table[${i}] == "${value}"')
+for value in table do -- Compile error, the table doesn't implement IntoIterator trait
+  -- ...
+end
+```
+
+Similar to Lua we should use `ipairs` to iterate over numeric indices.
+
+```fuse
+for (index, value) in Table::ipairs(table) do
+  print(value)
 end
 
--- table[1] == "First"
--- table[2] == "Second"
--- table[3] == "Third"
+-- First
+-- Second
+-- Third
 ```
 
 __Note__: As you can see items in the array part of our table have been printed in order.
 
-If we want to iterate over all key values in our table, We have to use `pairs` in place of the `ipairs` function.
+The `ipairs` is a static method of the `Table` type which will return an iterator for the argument table. This iterator would walk through all numeric indices of the table with the same caveats as the `ipairs` function in the Lua interpreters.
+If we want to iterate over all key values in our table, We have to use `pairs` in place of the `ipairs` method.
 
 ```fuse
-for key, value in pairs(table) do
+for (key, value) in Table::pairs(table) do
   if typeof key == number then
     print('table[${key}] == "${value}"')
   else 

@@ -205,7 +205,7 @@ Here's a possible implementation of the `filter` function for numbers.
 fn filter(nums: number[], predicate: fn(number) -> boolean) -> number[]
   const result: number[] = []
 
-  for i, num in ipairs(nums) do
+  for num in nums do
     if predicate(num) then
       result.insert(num)
     end
@@ -227,7 +227,7 @@ fn compute(num: number) -> number
   return num ^ 2
 end
 
-for i = 0, 100_000_000 do
+for i in 0..100_000_000 do
   print(compute(i))
 end
 ```
@@ -235,7 +235,7 @@ end
 It will result in a code similar to if it was written inside of the loop.
 
 ```fuse
-for i = 0, 100_000_000 do
+for i in 0..100_000_000 do
   print(i ^ 2)
 end
 ```
