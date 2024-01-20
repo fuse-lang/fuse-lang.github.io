@@ -19,6 +19,7 @@
   - tuples
   - arrays
   - enums
+  - ranges
   - loops
   - pattern-matching
   - structs
