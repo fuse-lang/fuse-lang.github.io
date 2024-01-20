@@ -76,3 +76,12 @@ match tuple when
   else end -- do nothing
 end
 ```
+
+Or we can use a range for that purpose.
+
+```fuse
+match tuple when
+  (Spring or Autumn, in 31..60) then print("Yay!") end
+  else end -- do nothing
+end
+```
