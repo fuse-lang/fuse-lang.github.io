@@ -129,7 +129,7 @@ const max = if a > b then a else b end
 
 ```fuse
 const fruits = ["apple", "orange", "kiwi", "banana"]
-for index, fruit in ipairs(fruits) do
+for fruit in fruits do
   print(fruit)
 end
 ```
@@ -167,7 +167,7 @@ assert(num == 10)
 A `repeat` block without any condition will act as an infinite loop.
 
 ```fuse
-repeat do
+repeat
   print("This will print forever!")
 end
 ```
