@@ -36,7 +36,7 @@ end
 ```
 
 A type system with support for pattern matching should enforce the exhaustion of the subject of match. It means if we start using a product variable such as a `Tuple` or `struct` we get to check product value of all possible pattern for every value in our compund type.
-For example while a `boolean` have 2 possible values `true` or `false`, and our Season enum contains 4 possible values; If we create a tuple of `(Season, boolean)` we have to check for `2 x 4 = 8` possible values. That's what we call a `product` type.
+For example while a `boolean` have 2 possible values `true` or `false`, and our Season enum contains 4 possible values; If we create a tuple of `(Season, boolean)` we have to check for `2 x 4 = 8` possible values. That's what we call a `product type`.
 
 ```fuse
 match tuple when
@@ -51,5 +51,28 @@ match tuple when
 
   (Winter, true) then "Winter and True" end
   (Winter, false) then "Winter and False" end
+end
+```
+
+A pattern on product types can check only some of values and capture others to use in the branch.
+For example if we don't care about our boolean value and only want to match our Season we can do this.
+
+```fuse
+match tuple when
+  (Spring, bool) then "Spring and ${bool}" end
+  (Summer, bool) then "Summer and ${bool}" end
+  (Autumn, bool) then "Autumn and ${bool}" end
+  (Winter, bool) then "Winter and ${bool}" end
+end
+```
+
+A `pattern` can also contain an optional if condition to further expand the pattern.
+
+For a tuple of `(Season, number)` containing the current season and day in that season, We can write the following match expression to only print the word `Yay!` for second month of `Autumn` and `Spring`.
+
+```fuse
+match tuple when
+  (Spring or Autumn, day) if day > 30 and day <= 60 then print("Yay!") end
+  else end -- do nothing
 end
 ```
