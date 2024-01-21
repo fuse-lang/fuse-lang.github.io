@@ -5,6 +5,31 @@ permalink: /docs/lang/special-types/
 
 There are a few special types in Fuse that can be used to describe certain things that are not possible to be represented using any usual type. On this page, we are going to learn about these types.
 
+### unknown
+
+Sometimes we don't know or we don't care about the types of our variables, In these situations we can use `unknown` as our type.
+The `unknown` keyword isn't a type by itself, It is just a way to inform the compiler that we don't need any type information for our variable.
+One of the more useful places for `unknown` types is in a `log` function. Let's say we have a static `log` function that would print anything into the console. We can implement such a function using an `unknown` argument type Since we need no type information to print our values into the console.
+
+```fuse
+static fn log(message: unknown)
+  print("[Info]:", message)
+end
+```
+
+### never
+
+A `never` type annotation can be used in places where we are not expecting a value. For example `panic` function return type is `never` since it will always result in the termination of the program and have no returning path.
+
+Here is an example implementation for the `panic` function
+
+```fuse
+static fn panic(error: impl Error) -> never
+  io::stderr.write("Process Panic! ${error.message()}\n")
+  os.exit(-1)
+end
+```
+
 ### unsafe
 
 An `unsafe` type can be used for any value, It is similar to the `any` type in `TypeScript` but there are a few exceptions.
