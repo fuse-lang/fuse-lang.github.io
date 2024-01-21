@@ -1,6 +1,6 @@
 ---
 title: Advance Typing
-permalink: /docs/lang/types/
+permalink: /docs/lang/advance-typing/
 ---
 
 The `type` keyword is used for creating an alias for one or more types that already exist.

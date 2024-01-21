@@ -27,7 +27,8 @@
   - traits
   - unions
   - tables
-  - types
+  - special-types
+  - advance-typing
   - generic
   - error-handling
 
