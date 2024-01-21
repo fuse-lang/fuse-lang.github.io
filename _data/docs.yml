@@ -23,11 +23,11 @@
   - ranges
   - loops
   - pattern-matching
+  - special-types
   - structs
   - traits
   - unions
   - tables
-  - special-types
   - advance-typing
   - generic
   - error-handling
