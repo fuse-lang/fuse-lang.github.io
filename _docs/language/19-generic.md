@@ -3,4 +3,4 @@ title: Generic
 permalink: /docs/lang/generic/
 ---
 
-## Empty
+### WIP: needs documentation.

@@ -3,4 +3,4 @@ title: HashSet
 permalink: /docs/lib/hashset/
 ---
 
-## Empty
+### WIP: needs documentation.
