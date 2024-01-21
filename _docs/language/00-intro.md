@@ -205,28 +205,47 @@ end
 
 Right now Fuse doesn't support multiline comments. we may add them back in the future but only if we see a real demand for them.
 
-### Nilable and Nil checks
+### Optional and nil
 
-Fuse by default is a `nil` safe language, We do not let any nil values be passed around. Since `nil` has its own type it is against the type system to assign `nil` to any other types but because of our `type semantic` type system we can explicitly say that a type can also be `nil`.
+Fuse itself is a `nil/null` safe language, We do not let any nil values be passed around. Instead we can use an `Optional` type to represent a value that may be `nil`, You may also know `Optional` types as `Maybe` and/or `Option`.
 
-This function will return `nil` if the user doesn't exist.
+This function returns a `User` if it exists otherwise it would return nothing.
 
 ```fuse
-fn get_user(id: number) -> User | nil
-  -- ...
+fn get_user(id: number) -> Optional<User>
+  if user_exists(id) then
+    Some(fetch_user(id))
+  else
+    None
+  end
 end
 ```
 
-When using a value that can be `nil` we always have to check for being `nil`.
+__Note__: There is actually a `nil` type in Fuse for compatibility with Lua, We explore this in the [error handling](/docs/error-handling) page.
+
+We can also add a question mark(`?`) to the end of our type to represent the same thing.
+
+```fuse
+fn get_user(id: number) -> User? -- result in Optional<User>
+  if user_exists(id) then
+    Some(fetch_user(id))
+  else
+    None
+  end
+end
+```
+
+When using an `Optional` value, We have to first `unwrap` the said value.
 
 ```fuse
 fn post_login_hooks(data: LoginData)
-  const user = get_user(data.uid)
+  const option = get_user(data.uid)
 
-  if user == nil then
-    print("User Not Found.")
-  else
+  if option.is_ok() then
+    const user = option.unwrap()
     print("Hello, ${user.display_name}")
+  else
+    print("User Not Found.")
   end
 end
 ```
@@ -234,9 +253,9 @@ end
 Or using pattern-matching
 
 ```fuse
-const message = match user when
-  { display_name } then "Hello, ${display_name}" end
-  else "User Not Found." end
+const message = match option when
+  Some(user) then "Hello, ${user.display_name}" end
+  None then "User Not Found." end
 end
 
 print(message)

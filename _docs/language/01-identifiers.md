@@ -27,10 +27,10 @@ The following keywords are reserved and cannot be used as identifiers.
 and        as         break      const      do         else
 elseif     end        enum       export     false      for
 from       function   fn         if         impl       import
-in         let        match      pub        nil        not
+in         let        match      pub        not        nil
 or         repeat     return     self       Self       static
-struct     then       trait      true       type       until
-when       where      while
+struct     then       trait      true       type       typeof
+until      when       where      while
 ```
 
 #### Legacy Lua Keywords
@@ -44,9 +44,9 @@ local
 These following keywords aren't a part of the language but they are reserved to keep current programs future proof and therefore one should not assume that all these keywords are coming in the upcoming releases of the Fuse language, Only a select few will get into the actual spec.
 
 ```
-abstract   async      await      catch      class      defer
-extends    finally    final      is         override   priv
-prot       satisfies  try        typeof     virtual    yield
+abstract   async      await      defer      extends    final
+is         override   priv       prot       satisfies  try
+virtual    yield
 ```
 
 ### Naming Conventions
