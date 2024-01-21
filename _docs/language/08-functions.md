@@ -1,6 +1,6 @@
 ---
 title: Functions
-permalink: /docs/functions/
+permalink: /docs/lang/functions/
 ---
 
 Functions are the most essential building block of Fuse Since you can create anything even numbers using functions alone. As mentioned earlier in the introduction, We treat functions just like every other value; They can be assigned to variables, Passed to functions as arguments, or returned from another function.

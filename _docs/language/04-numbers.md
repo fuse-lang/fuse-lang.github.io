@@ -1,6 +1,6 @@
 ---
 title: Numbers
-permalink: /docs/numbers/
+permalink: /docs/lang/numbers/
 ---
 
 By default all of the Lua interpreters come with `double` as their default numeric type; While it is possible to compile Lua for embedded environments without support for floating point numbers by configuring Lua to use `int` or `long` as its underlying type, We assume it being always `double` in the Fuse programming language and any number literal is being treated as if it is reflecting the [IEEE 754 standard](https://en.wikipedia.org/wiki/IEEE_754).

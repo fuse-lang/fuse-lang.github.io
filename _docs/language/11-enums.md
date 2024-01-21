@@ -1,6 +1,6 @@
 ---
 title: Enums
-permalink: /docs/enums/
+permalink: /docs/lang/enums/
 ---
 
 Enums are defined by a set of named constant values and they are defined like so:

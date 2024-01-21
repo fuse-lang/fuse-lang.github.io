@@ -1,6 +1,6 @@
 ---
 title: Variables
-permalink: /docs/variables/
+permalink: /docs/lang/variables/
 ---
 
 Here's an example of creating a constant and initializing it:

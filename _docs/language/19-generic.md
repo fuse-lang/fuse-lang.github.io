@@ -1,6 +1,6 @@
 ---
 title: Generic
-permalink: /docs/generic/
+permalink: /docs/lang/generic/
 ---
 
 ## Empty

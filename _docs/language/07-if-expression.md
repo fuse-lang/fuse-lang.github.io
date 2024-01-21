@@ -1,6 +1,6 @@
 ---
 title: If Expression
-permalink: /docs/if-expression/
+permalink: /docs/lang/if-expression/
 ---
 
 The `if` statement in Fuse is an expression and always will return a value. This value is always the last expression inside of the if block, the if expression can be used as a substitution for the ternary operator(`? :`).

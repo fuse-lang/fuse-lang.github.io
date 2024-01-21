@@ -1,6 +1,6 @@
 ---
 title: Arrays
-permalink: /docs/arrays/
+permalink: /docs/lang/arrays/
 ---
 
 Arrays are the most basic collection type in the Fuse language, They can hold a finite number of elements with the same type. Unlike the other collections, we do not need to import the `Array` type.

@@ -1,6 +1,6 @@
 ---
 title: Error Handling
-permalink: /docs/error-handling/
+permalink: /docs/lang/error-handling/
 ---
 
 ## Empty

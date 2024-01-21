@@ -1,6 +1,6 @@
 ---
 title: Identifiers
-permalink: /docs/identifiers/
+permalink: /docs/lang/identifiers/
 ---
 
 Identifiers are any name that we assign to things like variables, types, or functions.

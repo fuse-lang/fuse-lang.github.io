@@ -1,6 +1,6 @@
 ---
 title: Types
-permalink: /docs/types/
+permalink: /docs/lang/types/
 ---
 
 ### Type Alias

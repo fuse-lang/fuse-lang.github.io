@@ -1,6 +1,6 @@
 ---
 title: Strings
-permalink: /docs/strings/
+permalink: /docs/lang/strings/
 ---
 
 There are 2 types of strings in the Fuse language, [string](#string) and [ustring](#ustring); In this section, we are going to explore these two variants of the string type.

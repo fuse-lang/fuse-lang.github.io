@@ -1,6 +1,6 @@
 ---
 title: Booleans
-permalink: /docs/booleans/
+permalink: /docs/lang/booleans/
 ---
 
 The type `boolean` represents boolean values, These can be either `true` or `false`.

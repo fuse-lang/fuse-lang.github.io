@@ -1,6 +1,6 @@
 ---
 title: Pattern Matching
-permalink: /docs/pattern-matching/
+permalink: /docs/lang/pattern-matching/
 ---
 
 The `match` expression can be used to exhaustively match a variable with its different possible values.

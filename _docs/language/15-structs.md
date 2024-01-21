@@ -1,6 +1,6 @@
 ---
 title: Structs
-permalink: /docs/structs/
+permalink: /docs/lang/structs/
 ---
 
 A `struct` as the name suggests is the definition of a data structure, We can define a structure with the following syntax.

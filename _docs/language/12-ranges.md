@@ -1,6 +1,6 @@
 ---
 title: Ranges
-permalink: /docs/ranges/
+permalink: /docs/lang/ranges/
 ---
 
 Ranges are used to represent an inclusive range of numbers, They can be created either by use of the `Range` type or `start..end` syntax which would contain any numbers that is `start <= number <= end`.

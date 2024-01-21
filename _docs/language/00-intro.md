@@ -1,6 +1,6 @@
 ---
 title: Intro
-permalink: /docs/intro/
+permalink: /docs/lang/intro/
 ---
 
 This documentation is structured so that it can be read from top to bottom if you like. Each chapter builds upon what has been introduced previously. We assume the reader is familiar with the overall syntax of Lua and has some basic understanding of programming in general. Any Lua code provided in these examples is handwritten and shouldn't be assumed as the generated Lua result of Fuse code compilation. They are just there for the comparison and don't represent the generated Lua code.
@@ -207,7 +207,7 @@ Right now Fuse doesn't support multiline comments. we may add them back in the f
 
 ### Optional and nil
 
-Fuse itself is a `nil/null` safe language, We do not let any nil values be passed around. Instead we can use an `Optional` type to represent a value that may be `nil`, You may also know `Optional` types as `Maybe` and/or `Option`.
+Fuse itself is a `nil/null` safe language, We do not let any nil values be passed around. Instead we can use an `Optional` type to represent a value that may be `nil`, You may also know `Optional` types as `Maybe` and/or `Option` and other languages.
 
 This function returns a `User` if it exists otherwise it would return nothing.
 
@@ -221,7 +221,7 @@ fn get_user(id: number) -> Optional<User>
 end
 ```
 
-__Note__: There is actually a `nil` type in Fuse for compatibility with Lua, We explore this in the [error handling](/docs/error-handling) page.
+__Note__: There is actually a `nil` value exists in Fuse for compatibility with Lua, But there is no direct interaction with this value unless we are in an `unsafe` block. It will be explored in the [Interfacing with Lua](/docs/lua/intro).
 
 We can also add a question mark(`?`) to the end of our type to represent the same thing.
 

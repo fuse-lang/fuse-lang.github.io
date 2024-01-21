@@ -1,6 +1,6 @@
 ---
 title: Tables
-permalink: /docs/tables/
+permalink: /docs/lang/tables/
 ---
 
 The best way to understand `Table` is to think of it as 2 parts, A sorted `Array` part for indices that have the type of number, And a `HashMap` for everything else.

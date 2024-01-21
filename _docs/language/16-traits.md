@@ -1,6 +1,6 @@
 ---
 title: Traits
-permalink: /docs/traits/
+permalink: /docs/lang/traits/
 description: Traits
 ---
 

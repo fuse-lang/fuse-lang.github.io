@@ -1,6 +1,6 @@
 ---
 title: Logical Operators
-permalink: /docs/logical-ops/
+permalink: /docs/lang/logical-ops/
 ---
 
 On this page, we are going to explore the following operators.

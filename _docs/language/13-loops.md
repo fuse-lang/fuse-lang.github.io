@@ -1,6 +1,6 @@
 ---
 title: Loops
-permalink: /docs/loops/
+permalink: /docs/lang/loops/
 ---
 
 Loops in Fuse are really similar to the ones found in the Lua with a little bit syntax sugar inorder to make them more verstile. In this page we are going over different types of loops in the Fuse language.

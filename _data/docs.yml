@@ -6,6 +6,7 @@
   - roadmap
 
 - title: Language
+  category: lang
   docs:
   - intro
   - identifiers
@@ -29,7 +30,7 @@
   - generic
 
 - title: Fuse Standard Library
-  cat: lib
+  category: lib
   docs:
   - array
   - hashmap
