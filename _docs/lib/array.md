@@ -1,7 +1,6 @@
 ---
 title: Array
-permalink: /docs/array/
-description: Array
+permalink: /docs/lib/array/
 ---
 
 ## Empty

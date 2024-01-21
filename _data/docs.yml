@@ -29,6 +29,7 @@
   - generic
 
 - title: Fuse Standard Library
+  cat: lib
   docs:
   - array
   - hashmap

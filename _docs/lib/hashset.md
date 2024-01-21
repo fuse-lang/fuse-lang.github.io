@@ -1,7 +1,6 @@
 ---
 title: HashSet
-permalink: /docs/hashset/
-description: HashSet
+permalink: /docs/lib/hashset/
 ---
 
 ## Empty

@@ -1,7 +1,6 @@
 ---
 title: HashMap
-permalink: /docs/hashmap/
-description: HashMap
+permalink: /docs/lib/hashmap/
 ---
 
 ## Empty
