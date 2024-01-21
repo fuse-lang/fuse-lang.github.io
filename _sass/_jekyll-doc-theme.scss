@@ -62,3 +62,16 @@ code {
 .navbar-form .has-feedback .form-control-feedback {
   top: 10px;
 }
+.scroll-box-x {
+  overflow-x: scroll;
+}
+.docs-container {
+  padding: 0 1.5rem 0 0;
+
+  .docs-navbar {
+    position: fixed;
+    height: calc(100vh - 60px);
+    .navbar-fixed {
+    }
+  }
+}

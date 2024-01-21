@@ -2,13 +2,15 @@
 layout: default
 ---
 
-<div class="container">
+<div class="docs-container">
     <div class="row">
-        <div class="col-md-4">
-          {% include docs_nav.html %}
+        <div class="col-md-2 me-4">
+          <div class="col-md-2 scroll-box-x docs-navbar">
+            {% include docs_nav.html %}
+          </div>
         </div>
 
-        <div class="col-md-8">
+        <div class="col-md-10 scroll-box-x">
             <h1>{{ page.title }}</h1>
             <div id="markdown-content-container">{{ content }}</div>
             <div style="clear:both;">
@@ -25,3 +27,5 @@ layout: default
 
     </div>
 </div>
+
+<script src="{{ "/assets/js/docs.js" | relative_url }} "></script>
