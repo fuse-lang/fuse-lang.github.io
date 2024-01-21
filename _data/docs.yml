@@ -28,6 +28,7 @@
   - tables
   - types
   - generic
+  - error-handling
 
 - title: Fuse Standard Library
   category: lib
