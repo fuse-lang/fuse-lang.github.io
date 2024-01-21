@@ -30,7 +30,7 @@ from       function   fn         if         impl       import
 in         let        match      pub        not        nil
 or         repeat     return     self       Self       static
 struct     then       trait      true       type       typeof
-until      when       where      while
+union      until      when       where      while
 ```
 
 #### Legacy Lua Keywords
