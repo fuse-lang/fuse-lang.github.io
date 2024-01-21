@@ -68,10 +68,14 @@ code {
 .docs-container {
   padding: 0 1.5rem 0 0;
 
-  .docs-navbar {
-    position: fixed;
-    height: calc(100vh - 60px);
-    .navbar-fixed {
+  @media (min-width: 992px) {
+    .docs-navbar {
+      padding: 0 0 1.5rem 0;
+      position: fixed;
+      height: calc(100vh - 51px);
     }
+  }
+  .docs-body {
+    padding-left: 3.5rem;
   }
 }
