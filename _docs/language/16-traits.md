@@ -1,7 +1,6 @@
 ---
 title: Traits
 permalink: /docs/lang/traits/
-description: Traits
 ---
 
 Traits are the way to do object-oriented programming in the Fuse programming language, They are similar to interfaces in the fact that they enforce a certain representation and set of methods on our objects. A `trait` has a key difference with an interface and that is a trait that doesn't create a type. While both are used interchangeably we should keep in mind that traits are a compile-time concept and will get copied instead of inherited.

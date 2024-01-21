@@ -25,6 +25,7 @@
   - pattern-matching
   - structs
   - traits
+  - unions
   - tables
   - types
   - generic
