@@ -140,3 +140,13 @@ fn loop_and_print<T: IntoIterator | Iterator>(it: T) -> ()
   end
 end
 ```
+
+### Default types
+
+A generic type parameter can have a default type, All parameters without a default type should come before the ones with a default value.
+
+```fuse
+fn func<T, U, W = number>(a: T, b: U, c: W) -> ()
+  -- ...
+end
+```
