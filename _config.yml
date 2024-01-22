@@ -10,10 +10,6 @@ url: https://fuse-lang.github.io/ # the base hostname & protocol for your site
 git_address: https://github.com/fuse-lang/fuse-lang.github.io
 git_edit_address: https://github.com/fuse-lang/fuse-lang.github.io/tree/master
 
-# theme options from https://bootswatch.com/3/
-# comment out this to use default Bootstrap
-bootwatch: cyborg # cerulean cosmo custom cyborg darkly flatly journal lumen readable sandstone simplex slate solar spacelab superhero united yeti
-
 # Build settings
 markdown: kramdown
 highlighter: rouge
