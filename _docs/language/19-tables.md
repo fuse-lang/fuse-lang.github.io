@@ -27,10 +27,10 @@ We can specify non `string` keys explicitly by surrounding them in brackets.
 
 ```fuse
 const table = {
-  [2] = "Second Element",
-  [1] = "First Element",
-  [true] = "Element for true",
-  [false] = "Element for false",
+  [2]: "Second Element",
+  [1]: "First Element",
+  [true]: "Element for true",
+  [false]: "Element for false",
 }
 ```
 
