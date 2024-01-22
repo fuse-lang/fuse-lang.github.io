@@ -31,7 +31,7 @@ in         let        match      never      nil        not
 pub        or         repeat     return     self       Self
 static     struct     then       trait      true       type
 typeof     union      unknown    until      unsafe     when
-where      while
+while
 ```
 
 #### Legacy Lua Keywords
@@ -47,7 +47,7 @@ These following keywords aren't a part of the language but they are reserved to 
 ```
 abstract   async      await      defer      extends    final
 is         override   priv       prot       satisfies  try
-virtual    yield
+virtual    yield      where
 ```
 
 ### Naming Conventions
