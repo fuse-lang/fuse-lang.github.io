@@ -90,7 +90,7 @@ impl Person
   end
 
   pub fn hi(self)
-    print($"Hi, My name is ${self.name} and I'm ${self.age} years old!")
+    print("Hi, My name is ${self.name} and I'm ${self.age} years old!")
   end
 end
 
