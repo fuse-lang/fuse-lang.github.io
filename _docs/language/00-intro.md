@@ -266,12 +266,22 @@ print(message)
 To access exposed modules from other libraries use the `import` instruction.
 
 ```fuse
+-- Importing from our project.
+import MyModule from "relative/path/to/module"
+import { func } from "relative/path/to/another-module"
+
 -- Importing something from fuse standard library
 import io from "@fuse:io"
+import { HashMap } from "@fuse:collections"
 
--- Importing libraries from the Lua path
-import name from "path/to/lib"
+-- Importing from packages.
+import ThirdPartyPackage from "package:third-party-package"
+
+-- Importing libraries from the Lua path.
+import name from "@lua:path/to/lib"
 ```
+
+__Note__: As a conversion in Fuse we name files and directories with `kebab-case` but there is no restriction imposed on it by the compiler, For modules it is also possible to name them using `kebab-case` or `snake_case`, Similar to Rust's `cargo`, Fuse would resolve `my-module` and `my_module` to the same module.
 
 ### Collections
 
