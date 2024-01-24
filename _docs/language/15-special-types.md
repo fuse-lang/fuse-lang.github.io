@@ -79,3 +79,5 @@ end
 func(10)
 func("It will panic when trying to add a `number` to a `string` value")
 ```
+
+That's why in Fuse we have concept of `unsafe` and `try` blocks, We can either use an `unsafe` value inside of a [try expression](/docs/error-handling#try), or we have to mark the entire function as `unsafe`.

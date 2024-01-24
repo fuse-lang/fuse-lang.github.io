@@ -78,3 +78,75 @@ match opt when
   None then print("No config!") end
 end
 ```
+
+### Try expression
+
+All of the Fuse libraries are created using the solutions mentioned above. We still allow `unsafe` functions in our code, By default all modules imported from the Lua path(`@lua`) are imported as `unsafe` unless they have a type definition(`declare`) that defines them as otherwise.
+
+We can call these unsafe functions by putting a `try` keyword before them.
+
+```fuse
+unsafe fn unsafe_func()
+  -- ...
+end
+
+fn safe_func()
+  try unsafe_func() -- OK
+  unsafe_func() -- Compiler Error
+end
+```
+
+The `try` is an expression which means there is no `try ... catch` system, It will try to execute the expression and if it throws an error it will trap that and return the value or error as a `Result` union.
+
+```fuse
+unsafe fn unsafe_func(x: unsafe, y: number) -> number
+  -- ...
+end
+
+fn safe_func()
+  const result: Result<number> = try unsafe_func()
+end
+```
+
+A try block can also be used to execute multiple `unsafe` operations.
+
+```fuse
+fn safe_func()
+  const result: Result<number> = try do
+    const a = unsafe_func1()
+    const b = unsafe_func2()
+    a + b
+  end
+end
+```
+
+__Note__: Using a try block in situations where the specific error origin isn't important is a better choice for performance.
+
+
+If we don't `try` an unsafe function similar to `async-await` we have to also mark our function as `unsafe` so somewhere higher up the function chain we finally try everything together.
+
+
+```fuse
+unsafe fn a()
+  -- ...
+end
+
+unsafe fn b()
+  -- ...
+end
+
+unsafe fn c()
+  a + b
+end
+
+unsafe fn d()
+  const value = c()
+  const a = a()
+  const b = b()
+  (a, b, c)
+end
+
+fn safe_func()
+  const (a, b, c) = try d()
+end
+```
