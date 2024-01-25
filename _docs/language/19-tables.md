@@ -76,7 +76,7 @@ If we want to iterate over all key values in our table, We have to use `pairs` i
 
 ```fuse
 for (key, value) in Table::pairs(table) do
-  if typeof key == number then
+  if typeof(key) == number then
     print('table[${key}] == "${value}"')
   else 
     print('table["${key}"] == "${value}"')
@@ -135,7 +135,7 @@ Expressing the type of a table that contains keys that are not primitive is a li
 const t: { [Table]: string | number } = { [t1] = 42, [t2] = "Hi" }
 
 const elem = t[key]
-match typeof elem when
+match typeof(elem) when
   "string" then handle_string_value(elem as string) end
   "number" then handle_string_value(elem as number) end
   else end

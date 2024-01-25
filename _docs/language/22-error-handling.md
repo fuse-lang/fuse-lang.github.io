@@ -42,7 +42,7 @@ match result when
 end
 ```
 
-There are more ways to perform a lift operation on a `Result`, Learn more about it in the reference for `Result` type.
+There are more ways to perform a lift operation on a `Result`, Learn more about it in the reference for the `Result` type.
 
 ### Optional
 

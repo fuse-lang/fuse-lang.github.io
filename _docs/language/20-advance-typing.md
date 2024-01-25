@@ -57,7 +57,7 @@ Here is the same code using actual manual type checking.
 
 ```fuse
 fn add1(n: number | string) -> number
-  if typeof n == "number" then
+  if typeof(n) == "number" then
     (n as number) + 1
   else
     tonumber(n) + 1

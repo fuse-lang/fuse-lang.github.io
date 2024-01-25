@@ -32,7 +32,7 @@ end
 
 ### unsafe
 
-An `unsafe` type can be used for any value, It is similar to the `any` type in `TypeScript` but there are a few exceptions.
+An `unsafe` type can be used for any value, It in essence is the Fuse answer to the `any` type in `TypeScript` but there are some big differences.
 
 ```fuse
 let a: unsafe = "string"
@@ -50,34 +50,43 @@ Since an `unsafe` type can contain anything that exists in a Lua runtime, It is 
 let a: unsafe = nil
 ```
 
-That's why when we are using an `unsafe` value the compiler will always force an explicit `nil` check unless specifically instructed to.
+That's why when we are using an `unsafe` value the compiler will always force an explicit `nil` check unless specifically instructed not to.
 
 ```fuse
-fn func(value: unsafe)
+unsafe fn plus1(value: unsafe)
   value += 1 -- Compile error, value may be nil at this point.
 end
 ```
 We can either fix it with an explicit `nil` guard.
 
 ```fuse
-fn func(value: unsafe)
+unsafe fn plus1(value: unsafe)
   if value != nil then
-    value += 1 -- now it would compile
+    value += 1 -- OK
   end
 end
+
+plus1(10)
+plus1("It will panic when trying to add a `number` to a `string` value")
 ```
 
-While the code above would compile fine we have no guarantee that the `value` is a `number` so we should either check for it explicitly or expect runtime panics.
+__Note__: It is possible to store an `unsafe` variable like any other variable altho We can only operate on an `unsafe` value inside of a [try expression](/docs/error-handling#try), or we have to mark the entire function as `unsafe`.
+
+Now it would compile but it would make the whole function `unsafe` since it can throw an error if the value is anything other than `number`.
+
+There are a few ways to check the type of our variable at runtime, One of them is using the `typeof` function to get the type of our variable as a string.
 
 ```fuse
-fn func(value: unsafe)
-  if value != nil then
-    value += 1
+unsafe fn plus1(value: unsafe) -> unsafe
+  if typeof(value) == "number" then
+    value + 1
+  else
+    value
   end
 end
 
-func(10)
-func("It will panic when trying to add a `number` to a `string` value")
+plus1(10)
+plus1("It will also work")
 ```
 
-That's why in Fuse we have concept of `unsafe` and `try` blocks, We can either use an `unsafe` value inside of a [try expression](/docs/error-handling#try), or we have to mark the entire function as `unsafe`.
+The better way to work with `unsafe` variables is not to work with them at all. That is because there is almost no case in which we have a variable that isn't descriable with the type system. Also when we are working with values that have a type that we are not aware of it is not possible to do something specific on them without first checking for their types, In these cases, an `unknown` type would be a much better choice.
