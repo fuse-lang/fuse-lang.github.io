@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Site settings
 title: Fuse
 email: rzvxa@protonmail.com
@@ -57,59 +56,3 @@ collections:
   posts:
     permalink: /blog/:year/:month/:day/:title/
     output: true
-=======
-# Site settings
-title: Fuse
-email: rzvxa@protonmail.com
-description: >
-  A typed dialect of the Lua programming language
-lang: en-US
-
-baseurl: "/" # the subpath of your site, e.g. /blog/
-url: https://fuse-lang.github.io/ # the base hostname & protocol for your site
-git_address: https://github.com/fuse-lang/fuse-lang.github.io
-git_edit_address: https://github.com/fuse-lang/fuse-lang.github.io/tree/master
-
-# Build settings
-markdown: kramdown
-highlighter: rouge
-# Plugins (previously gems:)
-plugins:
-  - jekyll-feed
-  - jekyll-redirect-from
-  - jekyll-seo-tag
-  - jekyll-sitemap
-
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - .idea/
-  - .gitignore
-  - README.md
-  - vendor
-timezone: Europe/Berlin
-defaults:
-- scope:
-    path: _posts
-    type: posts
-  values:
-    layout: post
-    sectionid: blog
-
-- scope:
-    path: _docs
-    type: docs
-  values:
-    layout: docs
-    sectionid: docs
-    seo:
-      type: "WebPage"
-
-collections:
-  docs:
-    permalink: /:collection/:path/
-    output: true
-  posts:
-    permalink: /blog/:year/:month/:day/:title/
-    output: true
->>>>>>> 9c1c28d7891eaa7cfba1a2628ac11b36530dd420
