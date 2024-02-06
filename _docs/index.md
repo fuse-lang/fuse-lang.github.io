@@ -28,6 +28,8 @@ print("Hello World")
 print "Hello World"
 ```
 
+__Note__: Notice that we do not allow omitting parantecies for function calls.
+
 ### Fibonacci
 
 ##### Fuse
@@ -83,17 +85,17 @@ struct Person
 end
 
 impl Person
-  fn new(name: string, age: number) -> Self
+  pub fn new(name: string, age: number) -> Self
     return Self { name, age }
   end
 
-  fn hi(self)
-    print($"Hi, My name is ${self.name} and I'm ${self.age} years old!")
+  pub fn hi(self)
+    print("Hi, My name is ${self.name} and I'm ${self.age} years old!")
   end
 end
 
 const person = Person::new("Sam", 42)
-person:hi()
+person.hi()
 ```
 
 ##### Lua(it's not the actual compiled code)

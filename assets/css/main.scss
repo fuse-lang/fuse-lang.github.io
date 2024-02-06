@@ -6,15 +6,11 @@
 // Import partials from `sass_dir` (defaults to `_sass`)
 
 @import
-  {% if site.bootwatch %}
-    "bootswatch/{{site.bootwatch | downcase}}/variables",
-  {% endif %}
+  "bootswatch/variables",
 
   "bootstrap",
 
-  {% if site.bootwatch %}
-    "bootswatch/{{site.bootwatch | downcase}}/bootswatch",
-  {% endif %}
+  "bootswatch/bootswatch",
 
   "syntax-highlighting",
   "jekyll-doc-theme"

@@ -5,21 +5,41 @@
   - compatblity
   - roadmap
 
-- title: Basics
+- title: Language
+  category: lang
   docs:
   - intro
   - identifiers
   - variables
-  - strings
+  - booleans
   - numbers
-  - tables
+  - strings
+  - logical-ops
+  - if-expression
   - functions
+  - tuples
+  - arrays
+  - enums
+  - ranges
+  - loops
+  - pattern-matching
+  - special-types
   - structs
   - traits
+  - unions
+  - tables
+  - advance-typing
+  - generic
+  - error-handling
 
 - title: Fuse Standard Library
+  category: lib
   docs:
   - array
-  - list
-  - map
-  - set
+  - hashmap
+  - hashset
+
+- title: Interfacing with Lua
+  category: lua
+  docs:
+  - intro

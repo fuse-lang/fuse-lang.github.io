@@ -2,6 +2,7 @@
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
 
 {% include head.html %}
+{% include js_files.html %}
 
 <body>
 
@@ -12,9 +13,6 @@
             {{ content }}
         </div>
     </div>
-
-    {% include footer.html %}
-    {% include js_files.html %}
 </body>
 
 </html>

@@ -1,8 +1,15 @@
-{% comment %}
-Map grabs the doc sections, giving us an array of arrays. Join, flattens all
-the items to a comma delimited string. Split turns it into an array again.
-{% endcomment %}
-{% assign docs = site.data.docs | map: 'docs' | join: ',' | split: ',' %}
+{% assign docs = site.data.docs | map: 'docs' | join: ',' %}
+{% assign docs = "" | split: "," %}
+{% for section in site.data.docs %}
+  {% assign base_url = "/docs/" %}
+  {% if section.category %}
+  {% assign base_url = base_url | append: section.category | append: "/" %}
+  {% endif %}
+  {% for item in section.docs %}
+    {% assign item_url = item | prepend: base_url | append: "/" %}
+    {% assign docs = docs | push: item_url %}
+  {% endfor %}
+{% endfor %}
 
 {% comment %}
 Because this is built for every page, lets find where we are in the ordered
@@ -11,8 +18,7 @@ next, lets build a link to it.
 {% endcomment %}
 
 {% for document in docs %}
-  {% assign document_url = document | prepend:"/docs/" | append:"/" %}
-  {% if document_url == page.url %}
+  {% if document == page.url %}
     <ul class="pager">
       {% if forloop.first %}
         <li class="previous disabled">
@@ -22,7 +28,7 @@ next, lets build a link to it.
         </li>
       {% else %}
         {% assign previous = forloop.index0 | minus: 1 %}
-        {% assign previous_page = docs[previous] | prepend:"/docs/" | append:"/" %}
+        {% assign previous_page = docs[previous] %}
         <li class="previous">
           <a href="{{ previous_page | relative_url }}">
             <span aria-hidden="true">&larr;</span> Previous
@@ -38,7 +44,7 @@ next, lets build a link to it.
         </li>
       {% else %}
         {% assign next = forloop.index0 | plus: 1 %}
-        {% assign next_page = docs[next] | prepend:"/docs/" | append:"/" %}
+        {% assign next_page = docs[next] %}
         <li class="next">
           <a href="{{ next_page | relative_url }}">
             Next <span aria-hidden="true">&rarr;</span>
