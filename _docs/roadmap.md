@@ -3,14 +3,14 @@ title: Roadmap
 permalink: /docs/roadmap/
 ---
 
-- [ ] &nbsp;Proposal
+- [x] &nbsp;Proposal
 - [ ] &nbsp;Community Feedback
 - [ ] &nbsp;Experimental Compiler (Lua `5.1` support only)
 - [ ] &nbsp;Community Feedback
+- [ ] &nbsp;Temperorary Builtin Attributes Implemented Without Macros
 - [ ] &nbsp;Standard Library Implementation
 - [ ] &nbsp;`jit` and `ffi` support
 - [ ] &nbsp;LuaJIT support
-- [ ] &nbsp;Macro System
 - [ ] &nbsp;`Luau` support through vanilla `Lua 5.1` syntax
 - [ ] &nbsp;Finalize Language Specs
 - [ ] &nbsp;Compiler Rewrite
@@ -19,9 +19,16 @@ permalink: /docs/roadmap/
 - [ ] &nbsp;Lua `5.2` support
 - [ ] &nbsp;Lua `5.3` support
 - [ ] &nbsp;Lua `5.4` support
-- [ ] &nbsp;`Luau` support with full typed `Luau` syntax
+- [ ] &nbsp;`Luau` support with fully typed `Luau` syntax
+- [ ] &nbsp;Macro System
 - [ ] &nbsp;Async support
 - [ ] &nbsp;Iterative releases until version `1.0.0`
+	- [ ] &nbsp;Linter release
+	- [ ] &nbsp;Formatter release
+	- [ ] &nbsp;Testing suite release
+	- [ ] &nbsp;LSP release
+	- [ ] &nbsp;Package manager
+	- [ ] &nbsp;Compiler optimization and extended interoperability with older versions of Lua
 - [ ] &nbsp;Beyond
 	- [ ] &nbsp;Start of rolling releases from version `1.0.0`
 	- [ ] &nbsp;Start of `LTS` releases
