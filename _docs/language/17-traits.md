@@ -45,10 +45,11 @@ impl Pet for Cat
 end
 ```
 
-Now that we have 2 structures implementing the same trait we need a way to reference them or pass them into functions as arguments, But if you remember traits don't actually create a type, and therefore we have no knowledge of them at the runtime. That's why when we want to reference a type using the trait that it implements we have to specify it using the `impl` keyword, It will allow the compiler to dynamically dispatch the methods at runtime where needed, This will happen using a `vtable` created for that specific type.
+Now that we have 2 structures implementing the same trait we need a way to reference them or pass them into functions as arguments, But if you remember traits don't actually create a type, and therefore we have no knowledge of them at the runtime. However we still can use them as types to refer to a value that implements the said trait, This happens thanks to the dynamic dispatching and garbage collected nature of the language. While the use of a trait is natural for record types such as struct and table, It will force the compiler to box the primitives when they are treated like a dynamic reference type.
+
 
 ```fuse
-fn pet(p: impl Pet)
+fn pet(p: Pet)
   print(p.play())
 end
 
