@@ -26,11 +26,12 @@ The following keywords are reserved and cannot be used as identifiers.
 ```
 and        as         break      const      do         else
 elseif     end        enum       export     false      for
-from       function   fn         if         impl       import
-in         let        match      never      nil        not
-pub        or         repeat     return     self       Self
-static     struct     then       trait      true       type
-union      unknown    until      unsafe     when       while
+from       function   fn         global     if         impl
+import     in         let        match      never      nil
+not        pub        or         repeat     return     self
+Self       static     struct     then       trait      true
+type       union      unknown    until      unsafe     when
+while      
 ```
 
 #### Legacy Lua Keywords
