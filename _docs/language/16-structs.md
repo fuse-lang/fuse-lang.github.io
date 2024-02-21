@@ -64,7 +64,7 @@ Here is an example of implementing the `set_opacity` method for our `Color` stru
 
 ```fuse
 impl Color
-  pub fn set_opacity(self, opacity) -> ()
+  pub fn set_opacity(self, opacity: number) -> ()
       -- clamping alpha between 0 and 1
       self.a = math::min(math::max(opacity, 0), 1)
   end
