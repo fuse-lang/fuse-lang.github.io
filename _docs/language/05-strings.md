@@ -84,7 +84,7 @@ const hello: ustring = "こんにちは"
 -- is same as
 const hello = "こんにちは" as ustring
 -- is same as
-const hello = string::from("こんにちは")
+const hello = ustring::from("こんにちは")
 ```
 
 This rule is also applied to `multi-line` and `raw` strings.
