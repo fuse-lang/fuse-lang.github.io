@@ -14,7 +14,38 @@ The `string` type holds a sequence of `ASCII` characters and it can be created u
 const str1 = "I am a string defined using double quotes."
 const str2 = 'I am a string defined using single quotes.'
 const str3 = 'You can prefix string delimiters such as \' with a backslash.'
+const str3 = "You can prefix string delimiters such as \" with a backslash."
 const str4 = "Or you'd use the other string delimiter for it!"
+```
+
+### Mutliline strings
+
+Any string in fuse can accept new lines.
+
+```fuse
+const text1 = "Hello,
+world!
+"
+const text2 = 'Hello,
+world!
+'
+```
+
+Whitespace characters leading to the next character can be escaped using a `\` character.
+
+```fuse
+const text = "Hello, \
+              world!"
+
+assert(text == "Hello, world!")
+```
+
+This approach is really useful for formatting long strings. We can also add a new line before escaping the leading whitespaces with a `\n`.
+
+```fuse
+const text = "Hello, \n\
+              world!"
+assert(text == "Hello, \nworld!")
 ```
 
 ### String Interpolation
@@ -28,31 +59,9 @@ const str2 = "world"
 assert("${str1}, ${str2}!" == "hello, world!")
 ```
 
-### Mutliline strings
-
-To create a multi-line string use triple quotes; Both single(`'''`) and double(`"""`) variants work.
-
-```fuse
-const text1 = """I'm a multi-line string,
-All new lines in this string block are kept as is.
-You can even use single quotes (') and double quotes(")
-without any escaping!
-"""
-const text2 = '''I'm a multi-line string,
-All new lines in this string block are kept as is.
-You can even use single quotes (') and double quotes(")
-without any escaping!
-'''
-
-const text3 = '''Keep in mind that in these multi-line strings
-escaping still behaves similarly to a normal string.\nAnd you can also
-use ${string_interpolation} inside of them.
-'''
-```
-
 ### Raw strings
 
-In addition to the multi-line strings, there is also a way to create string literals without any escaping at all!
+In addition to the string literals mentioned above, There is also a way to create string literals without any escaping at all!
 These string literals are called `raw` strings. We can define them by prefixing the string quotes with(`r`) and an arbitrary number of hashes(`#`); How many hashes are used at the beginning of the string also marks its end, Since we do not escape anything inside of an raw string, This is the only way that we can have raw strings that contain `"#` in them.
 
 ```fuse
@@ -64,6 +73,9 @@ const unescaped2 = r##"I'm another raw string,
 But I can contain "# inside of me!"##
 
 const unescaped3 = r###'Yet another raw string,
+This one can contain '## in addition to '#.'###
+
+const unescaped4 = r###'Yet another raw string,
 This one can contain '## in addition to '#.'###
 ```
 __Note__: Raw strings do not support the string interpolation!
@@ -87,15 +99,9 @@ const hello = "こんにちは" as ustring
 const hello = ustring::from("こんにちは")
 ```
 
-This rule is also applied to `multi-line` and `raw` strings.
+This rule is also applies to `raw` strings.
 
 ```fuse
-const a = u"""a multi
-line string"""
-
-const b = u'''another multi
-line string'''
-
 -- notice that u comes before r
 const c = ur#"a "raw"
 'string' with \unescaped \characters\"#
