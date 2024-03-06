@@ -14,8 +14,8 @@ The `string` type holds a sequence of `ASCII` characters and it can be created u
 const str1 = "I am a string defined using double quotes."
 const str2 = 'I am a string defined using single quotes.'
 const str3 = 'You can prefix string delimiters such as \' with a backslash.'
-const str3 = "You can prefix string delimiters such as \" with a backslash."
-const str4 = "Or you'd use the other string delimiter for it!"
+const str4 = "You can prefix string delimiters such as \" with a backslash."
+const str5 = "Or you'd use the other string delimiter for it!"
 ```
 
 ### Mutliline strings
