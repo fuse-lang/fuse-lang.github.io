@@ -28,8 +28,8 @@ and        as         break      const      do         else
 elseif     end        enum       export     false      for
 from       function   fn         global     if         impl
 import     in         let        match      mut        never
-nil        not        own        pub        or         repeat
-return     self       Self       static     struct     then 
+nil        not        own        or         repeat     return     
+pub        self       Self       static     struct     then 
 trait      true       type       union      unknown    until
 unsafe     when       while      
 ```

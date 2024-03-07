@@ -66,6 +66,6 @@ In addition to variables we can define compile-time constants in Fuse, These wou
 We can define a constant similar to variables with the use of `const` keyword, Constants need an explicit type annotation and can only be a primitive ([string](/docs/string), [number](/docs/number), [boolean](/docs/boolean)) value.
 
 ```fuse
-const pi: number = 3.14
-const path: string = "assets/data/loading.png"
+const PI: number = 3.14
+const PATH: string = "assets/data/loading.png"
 ```
