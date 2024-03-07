@@ -53,23 +53,23 @@ fn pet(p: Pet)
   print(p.play())
 end
 
-const dog = Dog { name: "George" }
-const cat = Cat { name: "Amy" }
+let dog = Dog { name: "George" }
+let cat = Cat { name: "Amy" }
 
 -- we can pass both the dog and cat as their trait type
 pet(dog)
 pet(cat)
 
 -- we can also reduce their type and store them as their trait
-const my_pet: impl Pet = dog as Pet
+let my_pet: impl Pet = dog as Pet
 ```
 
 When we assign a variable to an `impl trait` type we erase the type information about the said object. The only way to retrieve the initial type back is through a cast which doesn't provide compile-time checks.
 
 ```fuse
-const pet1: impl Pet = dog as Pet
-const pet2: impl Pet = cat as Pet
+let pet1: impl Pet = dog as Pet
+let pet2: impl Pet = cat as Pet
 
-let my_dog: Dog = pet1 as Dog -- this will compile and run successfully
+let mut my_dog: Dog = pet1 as Dog -- this will compile and run successfully
 my_dog = pet2 as Dog -- this will also compile but will panic at runtime
 ```

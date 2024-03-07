@@ -26,7 +26,7 @@ __Note__: Notice that we do not need to annotate the full name of `Err` and `Ok`
 A `Result` then can be used to lift the value, It is possible either by an `unwrap` operation or the use of pattern matching.
 
 ```fuse
-const result = network_call(url)
+let result = network_call(url)
 -- ...
 if result.is_ok() then
   print(result.unwrap())
@@ -63,7 +63,7 @@ end
 It can get unwrapped just like a `Result` value.
 
 ```fuse
-const opt = load_config()
+let opt = load_config()
 
 if opt.is_some() then
   print(opt.unwrap())
@@ -104,7 +104,7 @@ unsafe fn unsafe_func(x: unsafe, y: number) -> number
 end
 
 fn safe_func()
-  const result: Result<number> = try unsafe_func()
+  let result: Result<number> = try unsafe_func()
 end
 ```
 
@@ -112,9 +112,9 @@ A try block can also be used to execute multiple `unsafe` operations.
 
 ```fuse
 fn safe_func()
-  const result: Result<number> = try do
-    const a = unsafe_func1()
-    const b = unsafe_func2()
+  let result: Result<number> = try do
+    let a = unsafe_func1()
+    let b = unsafe_func2()
     a + b
   end
 end
@@ -140,13 +140,13 @@ unsafe fn c()
 end
 
 unsafe fn d()
-  const value = c()
-  const a = a()
-  const b = b()
+  let value = c()
+  let a = a()
+  let b = b()
   (a, b, c)
 end
 
 fn safe_func()
-  const (a, b, c) = try d()
+  let (a, b, c) = try d()
 end
 ```

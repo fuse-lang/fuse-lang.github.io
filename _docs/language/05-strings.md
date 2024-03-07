@@ -11,11 +11,11 @@ There are 2 types of strings in the Fuse language, [string](#string) and [ustrin
 The `string` type holds a sequence of `ASCII` characters and it can be created using single or double quotes.
 
 ```fuse
-const str1 = "I am a string defined using double quotes."
-const str2 = 'I am a string defined using single quotes.'
-const str3 = 'You can prefix string delimiters such as \' with a backslash.'
-const str4 = "You can prefix string delimiters such as \" with a backslash."
-const str5 = "Or you'd use the other string delimiter for it!"
+let str1 = "I am a string defined using double quotes."
+let str2 = 'I am a string defined using single quotes.'
+let str3 = 'You can prefix string delimiters such as \' with a backslash.'
+let str4 = "You can prefix string delimiters such as \" with a backslash."
+let str5 = "Or you'd use the other string delimiter for it!"
 ```
 
 ### Mutliline strings
@@ -23,10 +23,10 @@ const str5 = "Or you'd use the other string delimiter for it!"
 Any string in fuse can accept new lines.
 
 ```fuse
-const text1 = "Hello,
+let text1 = "Hello,
 world!
 "
-const text2 = 'Hello,
+let text2 = 'Hello,
 world!
 '
 ```
@@ -34,7 +34,7 @@ world!
 Whitespace characters leading to the next character can be escaped using a `\` character.
 
 ```fuse
-const text = "Hello, \
+let text = "Hello, \
               world!"
 
 assert(text == "Hello, world!")
@@ -43,7 +43,7 @@ assert(text == "Hello, world!")
 This approach is really useful for formatting long strings. We can also add a new line before escaping the leading whitespaces with a `\n`.
 
 ```fuse
-const text = "Hello, \n\
+let text = "Hello, \n\
               world!"
 assert(text == "Hello, \nworld!")
 ```
@@ -53,8 +53,8 @@ assert(text == "Hello, \nworld!")
 You can put the value of an expression inside of a string using the `${expression}` syntax.
 
 ```fuse
-const str1 = "hello"
-const str2 = "world"
+let str1 = "hello"
+let str2 = "world"
 
 assert("${str1}, ${str2}!" == "hello, world!")
 ```
@@ -65,17 +65,17 @@ In addition to the string literals mentioned above, There is also a way to creat
 These string literals are called `raw` strings. We can define them by prefixing the string quotes with(`r`) and an arbitrary number of hashes(`#`); How many hashes are used at the beginning of the string also marks its end, Since we do not escape anything inside of an raw string, This is the only way that we can have raw strings that contain `"#` in them.
 
 ```fuse
-const unescaped1 = r#"I'm a raw string, I don't understand the meaning of escaping using a \ character.
+let unescaped1 = r#"I'm a raw string, I don't understand the meaning of escaping using a \ character.
 I also don't treat "Quotes" and new lines
 differently than any other characters..."#
 
-const unescaped2 = r##"I'm another raw string,
+let unescaped2 = r##"I'm another raw string,
 But I can contain "# inside of me!"##
 
-const unescaped3 = r###'Yet another raw string,
+let unescaped3 = r###'Yet another raw string,
 This one can contain '## in addition to '#.'###
 
-const unescaped4 = r###'Yet another raw string,
+let unescaped4 = r###'Yet another raw string,
 This one can contain '## in addition to '#.'###
 ```
 __Note__: Raw strings do not support the string interpolation!
@@ -90,23 +90,23 @@ Unicode string literals start with an `u` but it is completely optional since th
 The reason behind this lies in how different string encodings work. They are all just a string of bytes and that's why we call them `string`, So using `UTF-8`, `ASCII`, or any other encoding is in how we deal with these bytes and would have no effect on the literal definition itself.
 
 ```fuse
-const hello = u"こんにちは"
+let hello = u"こんにちは"
 -- is same as
-const hello: ustring = "こんにちは"
+let hello: ustring = "こんにちは"
 -- is same as
-const hello = "こんにちは" as ustring
+let hello = "こんにちは" as ustring
 -- is same as
-const hello = ustring::from("こんにちは")
+let hello = ustring::from("こんにちは")
 ```
 
 This rule is also applies to `raw` strings.
 
 ```fuse
 -- notice that u comes before r
-const c = ur#"a "raw"
+let c = ur#"a "raw"
 'string' with \unescaped \characters\"#
 
-const c = ur#'a "raw"
+let c = ur#'a "raw"
 'string' with \unescaped \characters\'#
 ```
 

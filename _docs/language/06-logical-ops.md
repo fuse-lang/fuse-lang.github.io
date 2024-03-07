@@ -43,12 +43,12 @@ assert_eq("Hello" or 2048, "Hello")
 One of the nice use cases of the `or` operator other than logical operations is to assign default values when one isn't provided, This will also help to narrow down the types.
 
 ```fuse
-const default: string = "Default Value"
-const value_a: string | nil = "Value"
-const value_b: string | nil = nil
+let default: string = "Default Value"
+let value_a: string | nil = "Value"
+let value_b: string | nil = nil
 
-const result_a: string = value_a or default -- notice that we got rid of nil in our type
-const result_b: string = value_b or default -- since this expression always provide a string
+let result_a: string = value_a or default -- notice that we got rid of nil in our type
+let result_b: string = value_b or default -- since this expression always provide a string
 
 assert_eq(result_a, value_a)
 assert_eq(result_b, default)

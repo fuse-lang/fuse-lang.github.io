@@ -9,7 +9,7 @@ If you are not familiar with the concept of `pattern matching` you can think of 
 We use it to `match` a variable or an expression with all of its possible `pattern`s. For example, this pattern-matching expression can be used to match a single enum type of seasons.
 
 ```fuse
-const name = match season when
+let name = match season when
   Spring then "Spring" end
   Summer then "Summer" end
   Autumn then "Autumn" end

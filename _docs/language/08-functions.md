@@ -49,10 +49,10 @@ fn fun() -> (string, number, boolean)
   return ("value", 42, true)
 end
 -------------------------------------
-const result = fun()
-const (str, num, bool) = result
+let result = fun()
+let (str, num, bool) = result
 -- or assign them directly
-const (str, num, bool) = fun()
+let (str, num, bool) = fun()
 ```
 
 If we don't want the last expression to be returned, We should either return explicitly or annotate our function with Unit return type.
@@ -161,25 +161,25 @@ greeting(name: "Sam")
 In Fuse, closures are defined using the exact syntax for functions but omitting the name.
 
 ```fuse
-const closure = fn(a: number, b: number): number => a + b
+let closure = fn(a: number, b: number) -> number => a + b
 ```
 
 While it may look like an anonymous function in other languages it is in fact a true closure that can capture values from its scope and also be inlined directly in the call site.
 
 ```fuse
 fn lcg(seed: number)
-  const a = 1140671485
-  const c = 128201163
-  const m = 2 ^ 24
+  let a = 1140671485
+  let c = 128201163
+  let m = 2 ^ 24
 
-  let rand = seed
+  let mut rand = seed
   return fn()
     rand = (a * rand + c) % m
     return rand
   end
 end
 
-const random = lcg(1)
+let random = lcg(1)
 
 assert_eq(random(), 10581448)
 assert_eq(random(), 11595892)
@@ -194,7 +194,7 @@ As we have read earlier, Fuse has first-class support for functions that's why w
 ```fuse
 fn fun(a: number, b: number) -> number => a + b
 
-const my_fun: fn(number, number) -> number = fun
+let my_fun: fn(number, number) -> number = fun
 ```
 
 Since now we have a way of expressing types of functions it is possible to have them as a function parameter or its return type. This notion of higher-order functions enables us to create more declarative programs.
@@ -203,7 +203,7 @@ Here's a possible implementation of the `filter` function for numbers.
 
 ```fuse
 fn filter(nums: number[], predicate: fn(number) -> boolean) -> number[]
-  const result: number[] = []
+  let result: number[] = []
 
   for num in nums do
     if predicate(num) then
@@ -245,10 +245,10 @@ Inlining a function will grow the size of our Lua code but it will pay off by im
 We can also use inline for function parameters that are function-type expressions.
 
 ```fuse
-const execution_time = get_execution_time()
+let execution_time = get_execution_time()
 
 fn execute(#[inline] func: fn() -> boolean)
-  const time = get_time()
+  let time = get_time()
   if func(time) then
     print("Function has been executed")
   end
@@ -260,17 +260,17 @@ execute(fn(time) => if time > execution_time then true else false end)
 The `inline` attribute will hint to the compiler that we prefer this function get inlined, But in some situations, the compiler may fail to do so for example in the example below it isn't possible to to inline the passed closure to the `execute` function since it captures `is_admin` which is a local variable to the `run` function.
 
 ```fuse
-const execution_time = get_execution_time()
+let execution_time = get_execution_time()
 
 fn execute(#[inline] func: fn() -> boolean)
-  const time = get_time()
+  let time = get_time()
   if func(time) then
     print("Function has been executed")
   end
 end
 
 fn run()
-  const is_admin = get_user().role == Role::Admin
+  let is_admin = get_user().role == Role::Admin
   execute(fn(time) => if is_admin and time > execution_time then true else false end)
 end
 
@@ -280,17 +280,17 @@ run()
 If the compiler tries to inline the `func` closure it will result in a transformed code like this:
 
 ```fuse
-const execution_time = get_execution_time()
+let execution_time = get_execution_time()
 
 fn execute()
-  const time = get_time()
+  let time = get_time()
   if is_admin and time > execution_time then -- notice is_admin dosn't exists here!
     print("Function has been executed")
   end
 end
 
 fn run()
-  const is_admin = get_user().role == Role::Admin
+  let is_admin = get_user().role == Role::Admin
   execute()
 end
 
@@ -300,18 +300,18 @@ run()
 Since we can not access the captured value `is_admin` in the execution site of our `func` function, the Compiler will fail to inline this closure and will fall back to using a normal closure. We can solve this by inlining the whole `execute` function instead of just the closure parameter used by it.
 
 ```fuse
-const execution_time = get_execution_time()
+let execution_time = get_execution_time()
 
 #[inline]
 fn execute(func: fn() -> boolean)
-  const time = get_time()
+  let time = get_time()
   if func(time) then
     print("Function has been executed")
   end
 end
 
 fn run()
-  const is_admin = get_user().role == Role::Admin
+  let is_admin = get_user().role == Role::Admin
   execute(fn(time) => if is_admin and time > execution_time then true else false end)
 end
 
@@ -321,11 +321,11 @@ run()
 Now that the compiler will inline the `execute` function we have access to all of our captured values inside our closure and it will result in a code as if we have written this instead:
 
 ```fuse
-const execution_time = get_execution_time()
+let execution_time = get_execution_time()
 
 fn run()
-  const is_admin = get_user().role == Role::Admin
-  const time = get_time()
+  let is_admin = get_user().role == Role::Admin
+  let time = get_time()
   if is_admin and time > execution_time then
     print("Function has been executed")
   end

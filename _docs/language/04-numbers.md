@@ -11,14 +11,14 @@ A number literal contains an integer part and an optional fractal part which are
 Here are some different ways to define `number` literals.
 
 ```fuse
-const a = 1
-const b = 0.5
-const b = 9.8
-const c = 5.43e-21
-const d = 0.123e45
-const e = 3e+14
-const f = 100_000_000_000
-const g = 0.000_000_000_001
+let a = 1
+let b = 0.5
+let b = 9.8
+let c = 5.43e-21
+let d = 0.123e45
+let e = 3e+14
+let f = 100_000_000_000
+let g = 0.000_000_000_001
 ```
 
 __NOTE__: Underlines can be used freely within any number literal to enhance its readability!
@@ -26,8 +26,8 @@ __NOTE__: Underlines can be used freely within any number literal to enhance its
 We can also define numbers using `Hexadecimal` or `Binary` literals.
 
 ```fuse
-const hex = 0xFF
-const bin = 0b11111111
+let hex = 0xFF
+let bin = 0b11111111
 ```
 
 ### Operations

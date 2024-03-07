@@ -6,15 +6,15 @@ permalink: /docs/lang/if-expression/
 The `if` statement in Fuse is an expression and always will return a value. This value is always the last expression inside of the if block, the if expression can be used as a substitution for the ternary operator(`? :`).
 
 ```fuse
-const a = 10
-const b = 20
+let a = 10
+let b = 20
 
-let is_even = false
+let mut is_even = false
 if a % 2 == 0 then
   is_even = true
 end
 
-let max = a
+let mut max = a
 if a > b then
   max = a
 else
@@ -38,13 +38,13 @@ When an `if` block is used as an expression to assign a variable or return a val
 
 ```fuse
 -- we need an else block when using if as an expression
-const validate = if email == "" then false end -- Compiler error, missing else block!
+let validate = if email == "" then false end -- Compiler error, missing else block!
 ```
 
 Here's `FizzBuzz` implemented using `if` expression.
 
 ```fuse
-const result = if n % 15 then
+let result = if n % 15 then
     "FizzBuzz"
   elseif n % 3 then
     "Fizz"

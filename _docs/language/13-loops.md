@@ -32,7 +32,14 @@ for (index, item) in collection.iter().enumerate() do
 end
 ```
 
-__Note__ Current iteration is stored in a `const` variable so we are not allowed to reassign them.
+__Note__ Current iteration is stored in an `immutable` variable so we are not allowed to reassign them. If we want to reassign it we can use `mut` keyword before binding the identifier.
+
+```fuse
+for (index, mut item) in collection.iter().enumerate() do
+  item += 1
+  print(index, item)
+end
+```
 
 ### While Loop
 
@@ -58,7 +65,7 @@ The other variant is a `repeat {body} end` expression which dosn't have an exit 
 
 ```fuse
 repeat
-  const dt = delta_time()
+  let dt = delta_time()
   game.update(dt)
 end
 ```
@@ -69,7 +76,7 @@ Break statement is used to terminate execution of a loop. For example given the 
 
 ```fuse
 repeat
-  const dt = delta_time()
+  let dt = delta_time()
   if not game.update(dt) then
     break
   end

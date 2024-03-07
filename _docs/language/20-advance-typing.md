@@ -41,11 +41,11 @@ Let's say we have a value that can either be a number or a string representing a
 ```fuse
 type AmbigiusType = string | number
 
-const a: AmbigiusType = 1
-const b: AmbigiusType = "2"
+let a: AmbigiusType = 1
+let b: AmbigiusType = "2"
 
-let num1: number = a as number -- compiles and runs
-let num2: number = b as number -- this would also compiles and run
+let mut num1: number = a as number -- compiles and runs
+let mut num2: number = b as number -- this would also compiles and run
 
 num1 += 1 -- it will run fine
 num2 += 1 -- it will panic in runtime, attempt to add 'string' to 'number'

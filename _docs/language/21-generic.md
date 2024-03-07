@@ -16,10 +16,10 @@ fn func<T>(e: T) -> T
   -- ...
 end
 
-const n: number = 12345
-const m: number = func<number>(n)
+let n: number = 12345
+let m: number = func<number>(n)
 -- or use type inference
-const m = func(n)
+let m = func(n)
 ```
 
 __Note__: One of the greatest places to use generic data types is in the collections, All of the collection types in Fuse are implemented using `generic` types.
@@ -98,7 +98,7 @@ While tables don't actually have a generic type and only can have generic functi
 ```fuse
 type MyTable<T> = { [T]: string }
 
-const my_table: MyTable<number> = { [1]: "One", [2]: "Two", [3]: "Tree" }
+let my_table: MyTable<number> = { [1]: "One", [2]: "Two", [3]: "Tree" }
 ```
 
 Generic type aliases also let us specify some type parameters while keeping others generic.
@@ -126,7 +126,7 @@ end
 Now we can only pass values that implement the `IntoIterator` trait.
 
 ```fuse
-const arr = [1, 2, 3]
+let arr = [1, 2, 3]
 loop_and_print(arr)
 loop_and_print("Hi") -- Error, it won't compile!
 ```

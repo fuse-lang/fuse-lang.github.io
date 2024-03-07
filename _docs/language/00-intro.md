@@ -36,6 +36,9 @@ Fuse is a gradually typed language, Historicly languages with strong type system
 This happens thanks to the type inference, The Type of all these variables is determined by their initialization:
 
 ```fuse
+let pi = 3.1415
+let c = 299792458
+let e = 2.7182
 let name = "Ada Lovelace"
 let pi = 3.14
 let do_major = ["do", "re", "mi", "fa", "sol", "la", "si", "do"]
@@ -51,13 +54,22 @@ let player = {
 }
 ```
 
-Read-only values can be defined as constants, these values cannot change after the initial assignment.
+All variables in Fuse by default are `immutable`, This means that after initializing its value we no longer can change it. But what about when we want to modify a variable? We have 2 ways to acheive this.
+One is simply define a new immutable variable with the same name.
 
 ```fuse
-const genre = "Jazz"
-const pi = 3.1415
-const c = 299792458
-const e = 2.7182
+let genre = "Jazz"
+let genre = genre.lowercase()
+```
+
+This way we would essentially shadow the old variable with a new variable simulating a variable mutation.
+But this won't work in all cases, Sometimes all we need is plain old mutable variables. We can mark a variable as `mutable` by adding the `mut` keyword in the variable declaration.
+
+```fuse
+let mut sum = 0
+for i in 1..100 do
+  sum += i
+end
 ```
 
 ### Types
@@ -68,18 +80,18 @@ In Fuse, we annotate types after the variable's name. This style of type annotat
 Here are some variable definitions with explicit type annotations.
 
 ```fuse
-const name: string = "Sam"
-const max_health: = 100
-let score: number | string = 30
+let name: string = "Sam"
+let max_health: = 100
+let mut score: number | string = 30
 score = "Max"
 ```
 
 As you can see variables can have one or more types, and variables with more than one type in their definition can be used with multiple value types; But reading their value as a specific type needs runtime checks and casting to prevent undesired behaviors.
 
 ```fuse
-const score: number | string = 30
-const score_number: number = score -- Error, Won't compile since may result in type error!
-const score_number: number = score as number -- Ok, Since we are explicitly casting to a number.
+let score: number | string = 30
+let score_number: number = score -- Error, Won't compile since may result in type error!
+let score_number: number = score as number -- Ok, Since we are explicitly casting to a number.
 ```
 
 ### Functions
@@ -122,13 +134,13 @@ end
 In Fuse `if` also can be used as an expression.
 
 ```fuse
-const max = if a > b then a else b end
+let max = if a > b then a else b end
 ```
 
 ### For Loop
 
 ```fuse
-const fruits = ["apple", "orange", "kiwi", "banana"]
+let fruits = ["apple", "orange", "kiwi", "banana"]
 for fruit in fruits do
   print(fruit)
 end
@@ -139,8 +151,8 @@ See [For Loop](/docs/loops/)
 ### While Loop
 
 ```fuse
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-let index = 1
+let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+let mut index = 1
 while index < #numbers do
   print("Number at index ${index} is ${numbers[index]}")
   index += 1
@@ -239,10 +251,10 @@ When using an `Optional` value, We have to first `unwrap` the said value.
 
 ```fuse
 fn post_login_hooks(data: LoginData)
-  const option = get_user(data.uid)
+  let option = get_user(data.uid)
 
   if option.is_ok() then
-    const user = option.unwrap()
+    let user = option.unwrap()
     print("Hello, ${user.display_name}")
   else
     print("User Not Found.")
@@ -253,7 +265,7 @@ end
 Or using pattern-matching
 
 ```fuse
-const message = match option when
+let message = match option when
   Some(user) then "Hello, ${user.display_name}" end
   None then "User Not Found." end
 end
@@ -291,10 +303,10 @@ Because of these differences in the workflow of Fuse and Lua, We can introduce a
 ```fuse
 import { Array, List, Map, Set } from "@fuse:collections"
 
-const array: Array<number> = [1, 2, 3]
-const list: List<number> = [1, 2, 3]
-const map: Map<string, number> = { "A": 1, "Blue", 42, "Jay": 9 }
-const set: Set<string> = { "Just", "The", "Unique", "Entries" }
+let array: Array<number> = [1, 2, 3]
+let list: List<number> = [1, 2, 3]
+let map: Map<string, number> = { "A": 1, "Blue", 42, "Jay": 9 }
+let set: Set<string> = { "Just", "The", "Unique", "Entries" }
 ```
 
 ### Struct

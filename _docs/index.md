@@ -61,7 +61,7 @@ end
 ##### Fuse
 
 ```fuse
-const t = { a: "A", b: "B", c: 3 }
+let t = { a: "A", b: "B", c: 3 }
 
 print(t.a)
 ```
@@ -94,7 +94,7 @@ impl Person
   end
 end
 
-const person = Person::new("Sam", 42)
+let person = Person::new("Sam", 42)
 person.hi()
 ```
 

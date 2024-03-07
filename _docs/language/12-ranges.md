@@ -6,9 +6,9 @@ permalink: /docs/lang/ranges/
 Ranges are used to represent an inclusive range of numbers, They can be created either by use of the `Range` type or `start..end` syntax which would contain any numbers that is `start <= number <= end`.
 
 ```fuse
-const range = 1..100
+let range = 1..100
 -- or
-const range = Range::new(1, 100)
+let range = Range::new(1, 100)
 
 assert_eq(range.contains(1))
 assert_eq(range.contains(50))

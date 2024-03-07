@@ -17,16 +17,16 @@ end
 Initialization of a structure happens using the `T { values }` expression, Where `T` is the type of our structure and named values of the structure placed between curly brackets.
 
 ```fuse
-const color = Color { r: 1, g: 1, b: 1, a: 1 }
+let color = Color { r: 1, g: 1, b: 1, a: 1 }
 ```
 
 If we are initializing the struct using a variable with the same name as it would have as its field, We can omit specifying the field name.
 
 ```fuse
-const r = 1
-const g = 0.32
-const alpha
-const color = Color { r, g, b: 0.5, alpha: alpha }
+let r = 1
+let g = 0.32
+let alpha
+let color = Color { r, g, b: 0.5, alpha: alpha }
 ```
 
 But now if we try to access our values `x` and `y` through the dot notion we will get an error saying we don't have access to the said variable.
@@ -45,7 +45,7 @@ struct Color
   pub a: number
 end
 
-const color = Color { r: 1, g: 0.5, b: 0.1, a: 0.9 }
+let color = Color { r: 1, g: 0.5, b: 0.1, a: 0.9 }
 
 -- now these lines would compile fine.
 assert_eq(color.r, 1)
@@ -86,7 +86,7 @@ end
 
 -- ...
 
-const color = Color::new(0.3, 0.3, 0.3, 1)
+let color = Color::new(0.3, 0.3, 0.3, 1)
 ```
 
 __Note__: Type `Self` is an alias for the type of our target structure.
